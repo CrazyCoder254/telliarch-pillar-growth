@@ -71,10 +71,11 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="py-20 bg-gradient-to-b from-background via-accent/5 to-background">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-6">Our Services</h2>
+          <h2 className="mb-6 text-primary">Our Services</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-secondary via-accent to-secondary mx-auto mb-6 rounded-full" />
           <p className="text-lg text-muted-foreground">
             Comprehensive consultancy solutions tailored to your business needs, 
             delivered by experienced professionals across multiple disciplines.
@@ -85,20 +86,20 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="shadow-elegant hover:shadow-glow transition-smooth border-none group"
+              className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card group"
             >
               <CardHeader>
-                <div className="w-14 h-14 gradient-accent rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-smooth">
+                <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-smooth">
                   <service.icon className="text-white" size={28} />
                 </div>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
+                <CardTitle className="text-xl text-primary">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">{service.description}</p>
                 <ul className="space-y-2">
                   {service.details.map((detail, idx) => (
                     <li key={idx} className="flex items-start text-sm text-muted-foreground">
-                      <span className="text-secondary mr-2">•</span>
+                      <span className="text-secondary mr-2 font-bold">•</span>
                       {detail}
                     </li>
                   ))}

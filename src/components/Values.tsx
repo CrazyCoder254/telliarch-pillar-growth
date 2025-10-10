@@ -31,10 +31,11 @@ const values = [
 
 const Values = () => {
   return (
-    <section id="values" className="py-20 bg-muted">
+    <section id="values" className="py-20 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="mb-6">Our Core Values</h2>
+          <h2 className="mb-6 text-primary">Our Core Values</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-secondary via-accent to-secondary mx-auto mb-6 rounded-full" />
           <p className="text-lg text-muted-foreground">
             The principles that guide our work and define our commitment to excellence
           </p>
@@ -44,13 +45,13 @@ const Values = () => {
           {values.map((value, index) => (
             <Card
               key={index}
-              className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center group"
+              className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center bg-card group"
             >
               <CardContent className="p-8">
-                <div className="w-16 h-16 gradient-primary rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-smooth">
+                <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-smooth">
                   <value.icon className="text-white" size={32} />
                 </div>
-                <h3 className="text-xl font-bold mb-4">{value.title}</h3>
+                <h3 className="text-xl font-bold mb-4 text-primary">{value.title}</h3>
                 <p className="text-muted-foreground">{value.description}</p>
               </CardContent>
             </Card>

@@ -82,6 +82,12 @@ const Navbar = () => {
             >
               Values
             </button>
+            <Link to="/careers" className="text-foreground/80 hover:text-foreground transition-smooth">
+              Careers
+            </Link>
+            <Link to="/gallery" className="text-foreground/80 hover:text-foreground transition-smooth">
+              Gallery
+            </Link>
             <button
               onClick={() => scrollToSection("contact")}
               className="text-foreground/80 hover:text-foreground transition-smooth"
@@ -131,6 +137,12 @@ const Navbar = () => {
             >
               Values
             </button>
+            <Link to="/careers" className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2">
+              Careers
+            </Link>
+            <Link to="/gallery" className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2">
+              Gallery
+            </Link>
             <button
               onClick={() => scrollToSection("contact")}
               className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2"
