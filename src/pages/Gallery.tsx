@@ -66,7 +66,7 @@ const Gallery = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryImages.map((item, index) => (
-              <Card key={index} className="shadow-elegant hover:shadow-glow transition-smooth border-none overflow-hidden group">
+              <Card key={index} className="shadow-elegant hover:shadow-glow transition-smooth border-none overflow-hidden group bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <div className="relative h-64 bg-gradient-to-br from-primary via-accent to-secondary overflow-hidden">
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-smooth" />
                   <div className="absolute top-4 right-4">

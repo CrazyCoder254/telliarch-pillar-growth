@@ -45,7 +45,8 @@ const Values = () => {
           {values.map((value, index) => (
             <Card
               key={index}
-              className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center bg-card group"
+              className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center bg-card/80 backdrop-blur-sm group animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-8">
                 <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-smooth">

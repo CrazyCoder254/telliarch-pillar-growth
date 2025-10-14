@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
+import { ThemeToggle } from "./ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,11 +39,23 @@ const Navbar = () => {
   };
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+    // Navigate to home page first if not already there
+    if (window.location.pathname !== "/") {
+      navigate("/");
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -63,37 +76,38 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-foreground/80 hover:text-foreground transition-smooth"
+              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="text-foreground/80 hover:text-foreground transition-smooth"
+              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("values")}
-              className="text-foreground/80 hover:text-foreground transition-smooth"
+              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
             >
               Values
             </button>
-            <Link to="/careers" className="text-foreground/80 hover:text-foreground transition-smooth">
+            <Link to="/careers" className="text-foreground/80 hover:text-secondary transition-smooth font-medium">
               Careers
             </Link>
-            <Link to="/gallery" className="text-foreground/80 hover:text-foreground transition-smooth">
+            <Link to="/gallery" className="text-foreground/80 hover:text-secondary transition-smooth font-medium">
               Gallery
             </Link>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-foreground/80 hover:text-foreground transition-smooth"
+              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
             >
               Contact
             </button>
+            <ThemeToggle />
             {user ? (
               <Button onClick={handleSignOut} variant="outline" size="sm">
                 Sign Out
@@ -118,37 +132,41 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top">
+          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top bg-background/95 backdrop-blur-lg rounded-lg p-4 shadow-elegant">
             <button
               onClick={() => scrollToSection("about")}
-              className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2"
+              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2"
+              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("values")}
-              className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2"
+              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
             >
               Values
             </button>
-            <Link to="/careers" className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2">
+            <Link to="/careers" className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium">
               Careers
             </Link>
-            <Link to="/gallery" className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2">
+            <Link to="/gallery" className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium">
               Gallery
             </Link>
             <button
               onClick={() => scrollToSection("contact")}
-              className="block w-full text-left text-foreground/80 hover:text-foreground transition-smooth py-2"
+              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
             >
               Contact
             </button>
+            <div className="flex items-center gap-2 py-2">
+              <span className="text-secondary font-medium">Theme:</span>
+              <ThemeToggle />
+            </div>
             {user ? (
               <Button onClick={handleSignOut} variant="outline" size="sm" className="w-full">
                 Sign Out

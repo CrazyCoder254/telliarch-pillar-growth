@@ -86,7 +86,8 @@ const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card group"
+              className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm group animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardHeader>
                 <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-smooth">

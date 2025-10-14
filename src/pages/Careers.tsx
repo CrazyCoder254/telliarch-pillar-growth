@@ -53,7 +53,7 @@ const Careers = () => {
           <div className="max-w-4xl mx-auto mb-16 text-center">
             <h2 className="mb-6">Why Work With Us?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <Card className="shadow-elegant border-none bg-card">
+              <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.1s' }}>
                 <CardContent className="p-6 text-center">
                   <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
                     <Briefcase className="text-white" size={24} />
@@ -63,7 +63,7 @@ const Careers = () => {
                 </CardContent>
               </Card>
 
-              <Card className="shadow-elegant border-none bg-card">
+              <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>
                 <CardContent className="p-6 text-center">
                   <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
                     <Clock className="text-white" size={24} />
@@ -73,7 +73,7 @@ const Careers = () => {
                 </CardContent>
               </Card>
 
-              <Card className="shadow-elegant border-none bg-card">
+              <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.3s' }}>
                 <CardContent className="p-6 text-center">
                   <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
                     <MapPin className="text-white" size={24} />
@@ -89,7 +89,7 @@ const Careers = () => {
             <h2 className="mb-12 text-center">Open Positions</h2>
             <div className="space-y-6">
               {positions.map((position, index) => (
-                <Card key={index} className="shadow-elegant hover:shadow-glow transition-smooth border-none">
+                <Card key={index} className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: `${(index + 4) * 0.1}s` }}>
                   <CardContent className="p-8">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                       <div className="flex-1">

@@ -17,7 +17,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card group">
+          <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm group animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-smooth">
                 <Target className="text-white" size={32} />
@@ -31,7 +31,7 @@ const About = () => {
             </CardContent>
           </Card>
 
-          <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card group">
+          <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm group animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-smooth">
                 <Eye className="text-white" size={32} />
@@ -45,7 +45,7 @@ const About = () => {
             </CardContent>
           </Card>
 
-          <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card group">
+          <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm group animate-fade-in" style={{ animationDelay: '0.3s' }}>
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-smooth">
                 <Award className="text-white" size={32} />
@@ -60,7 +60,7 @@ const About = () => {
           </Card>
         </div>
 
-        <Card className="shadow-elegant border-none">
+        <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.4s' }}>
           <CardContent className="p-8">
             <h3 className="mb-6 text-2xl text-center">Company Information</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
