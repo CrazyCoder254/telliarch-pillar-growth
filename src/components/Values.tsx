@@ -1,5 +1,6 @@
 import { Card, CardContent } from "./ui/card";
 import { Shield, Lightbulb, Star, Users, Award } from "lucide-react";
+import { motion } from "framer-motion";
 
 const values = [
   {
@@ -33,20 +34,46 @@ const Values = () => {
   return (
     <section id="values" className="py-20 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-6 text-primary">Our Core Values</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-secondary via-accent to-secondary mx-auto mb-6 rounded-full" />
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-secondary via-accent to-secondary mx-auto mb-6 rounded-full"
+            animate={{ 
+              width: ["96px", "144px", "96px"],
+            }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
           <p className="text-lg text-muted-foreground">
             The principles that guide our work and define our commitment to excellence
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((value, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center bg-card/80 backdrop-blur-sm group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              initial={{ opacity: 0, rotateY: -15 }}
+              whileInView={{ opacity: 1, rotateY: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.6,
+                delay: index * 0.12,
+                ease: "easeOut"
+              }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <Card
+              className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center bg-card/80 backdrop-blur-sm group h-full"
             >
               <CardContent className="p-8">
                 <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-smooth">
@@ -56,6 +83,7 @@ const Values = () => {
                 <p className="text-muted-foreground">{value.description}</p>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
         </div>
       </div>

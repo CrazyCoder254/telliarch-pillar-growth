@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Users, DollarSign, Target, TrendingUp, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -73,21 +74,47 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-background via-accent/5 to-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <motion.div 
+          className="max-w-3xl mx-auto text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="mb-6 text-primary">Our Services</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-secondary via-accent to-secondary mx-auto mb-6 rounded-full" />
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-secondary via-accent to-secondary mx-auto mb-6 rounded-full"
+            animate={{ 
+              width: ["96px", "144px", "96px"],
+            }}
+            transition={{ 
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
           <p className="text-lg text-muted-foreground">
             Comprehensive consultancy solutions tailored to your business needs, 
             delivered by experienced professionals across multiple disciplines.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card
+            <motion.div
               key={index}
-              className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ 
+                duration: 0.5,
+                delay: index * 0.15,
+                ease: "easeOut"
+              }}
+              whileHover={{ y: -5 }}
+            >
+              <Card
+              className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm group h-full"
             >
               <CardHeader>
                 <div className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-smooth">
@@ -107,6 +134,7 @@ const Services = () => {
                 </ul>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
         </div>
       </div>

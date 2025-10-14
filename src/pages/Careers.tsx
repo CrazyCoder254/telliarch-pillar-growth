@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Briefcase, Clock, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Careers = () => {
   const positions = [
@@ -53,35 +54,45 @@ const Careers = () => {
           <div className="max-w-4xl mx-auto mb-16 text-center">
             <h2 className="mb-6">Why Work With Us?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.1s' }}>
-                <CardContent className="p-6 text-center">
-                  <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Briefcase className="text-white" size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Professional Growth</h3>
-                  <p className="text-muted-foreground">Continuous learning and development opportunities</p>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <CardContent className="p-6 text-center">
-                  <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Clock className="text-white" size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Work-Life Balance</h3>
-                  <p className="text-muted-foreground">Flexible work arrangements and supportive culture</p>
-                </CardContent>
-              </Card>
-
-              <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: '0.3s' }}>
-                <CardContent className="p-6 text-center">
-                  <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MapPin className="text-white" size={24} />
-                  </div>
-                  <h3 className="text-xl font-bold mb-2">Impactful Work</h3>
-                  <p className="text-muted-foreground">Make a real difference in businesses' success</p>
-                </CardContent>
-              </Card>
+              {[
+                {
+                  icon: Briefcase,
+                  title: "Professional Growth",
+                  description: "Continuous learning and development opportunities"
+                },
+                {
+                  icon: Clock,
+                  title: "Work-Life Balance",
+                  description: "Flexible work arrangements and supportive culture"
+                },
+                {
+                  icon: MapPin,
+                  title: "Impactful Work",
+                  description: "Make a real difference in businesses' success"
+                }
+              ].map((benefit, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                >
+                  <Card className="shadow-elegant border-none bg-card/80 backdrop-blur-sm h-full">
+                    <CardContent className="p-6 text-center">
+                      <div className="w-14 h-14 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                        <benefit.icon className="text-white" size={24} />
+                      </div>
+                      <h3 className="text-xl font-bold mb-2">{benefit.title}</h3>
+                      <p className="text-muted-foreground">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
             </div>
           </div>
 
@@ -89,34 +100,52 @@ const Careers = () => {
             <h2 className="mb-12 text-center">Open Positions</h2>
             <div className="space-y-6">
               {positions.map((position, index) => (
-                <Card key={index} className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm animate-fade-in" style={{ animationDelay: `${(index + 4) * 0.1}s` }}>
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-3 text-primary">{position.title}</h3>
-                        <div className="flex flex-wrap gap-4 mb-4">
-                          <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                            <Briefcase size={16} className="text-secondary" />
-                            {position.type}
-                          </span>
-                          <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
-                            <MapPin size={16} className="text-secondary" />
-                            {position.location}
-                          </span>
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: index * 0.15,
+                    ease: "easeOut"
+                  }}
+                >
+                  <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none bg-card/80 backdrop-blur-sm">
+                    <CardContent className="p-8">
+                      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                        <div className="flex-1">
+                          <h3 className="text-2xl font-bold mb-3 text-primary">{position.title}</h3>
+                          <div className="flex flex-wrap gap-4 mb-4">
+                            <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                              <Briefcase size={16} className="text-secondary" />
+                              {position.type}
+                            </span>
+                            <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
+                              <MapPin size={16} className="text-secondary" />
+                              {position.location}
+                            </span>
+                          </div>
+                          <p className="text-muted-foreground">{position.description}</p>
                         </div>
-                        <p className="text-muted-foreground">{position.description}</p>
+                        <Button variant="default" size="lg" className="gradient-accent text-white border-none hover:opacity-90">
+                          Apply Now
+                        </Button>
                       </div>
-                      <Button variant="default" size="lg" className="gradient-accent text-white border-none hover:opacity-90">
-                        Apply Now
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               ))}
             </div>
           </div>
 
-          <div className="max-w-3xl mx-auto mt-16 text-center">
+          <motion.div 
+            className="max-w-3xl mx-auto mt-16 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             <Card className="shadow-elegant border-none gradient-primary">
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-4 text-white">Don't See Your Role?</h3>
@@ -128,7 +157,7 @@ const Careers = () => {
                 </Button>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
         </div>
       </section>
 
