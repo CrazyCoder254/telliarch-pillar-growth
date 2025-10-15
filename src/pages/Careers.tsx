@@ -1,37 +1,38 @@
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Briefcase, Clock, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Careers = () => {
-  const positions = [
-    {
-      title: "Human Resource Consultant",
-      type: "Full-time",
-      location: "Sagana, Kenya",
-      description: "Join our team to help businesses optimize their human resource strategies and foster organizational growth."
-    },
-    {
-      title: "Financial Management Consultant",
-      type: "Full-time",
-      location: "Sagana, Kenya",
-      description: "Work with diverse clients to provide expert financial management and accounting consultancy services."
-    },
-    {
-      title: "Strategic Management Consultant",
-      type: "Full-time",
-      location: "Sagana, Kenya",
-      description: "Help organizations develop and implement strategic plans to achieve their long-term goals."
-    },
-    {
-      title: "Marketing & Brand Consultant",
-      type: "Full-time",
-      location: "Sagana, Kenya",
-      description: "Drive brand positioning and marketing strategies for businesses across various industries."
+  const [positions, setPositions] = useState<any[]>([]);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    const { data, error } = await supabase
+      .from('jobs')
+      .select('*')
+      .eq('is_active', true)
+      .order('created_at', { ascending: false });
+    
+    if (error) {
+      toast({ 
+        title: "Error loading jobs", 
+        description: error.message, 
+        variant: "destructive" 
+      });
+    } else {
+      setPositions(data || []);
     }
-  ];
+  };
 
   return (
     <div className="min-h-screen">

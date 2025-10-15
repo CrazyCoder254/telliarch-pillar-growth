@@ -1,51 +1,36 @@
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const Gallery = () => {
-  const galleryImages = [
-    {
-      title: "Strategic Planning Workshop",
-      description: "Guiding businesses through comprehensive strategic planning sessions",
-      category: "Workshops"
-    },
-    {
-      title: "Team Building Activities",
-      description: "Facilitating cohesive team development and collaboration",
-      category: "Events"
-    },
-    {
-      title: "Financial Consultancy",
-      description: "Delivering expert financial management solutions",
-      category: "Consulting"
-    },
-    {
-      title: "HR Training Sessions",
-      description: "Empowering organizations through human resource development",
-      category: "Training"
-    },
-    {
-      title: "Brand Development",
-      description: "Creating impactful brand identities for our clients",
-      category: "Marketing"
-    },
-    {
-      title: "Client Success Stories",
-      description: "Celebrating achievements and milestones with our partners",
-      category: "Success"
-    },
-    {
-      title: "Mental Wellness Programs",
-      description: "Supporting employee well-being and mental health",
-      category: "Wellness"
-    },
-    {
-      title: "Business Strategy Meetings",
-      description: "Collaborative sessions driving organizational excellence",
-      category: "Strategy"
+  const [galleryImages, setGalleryImages] = useState<any[]>([]);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const fetchImages = async () => {
+    const { data, error } = await supabase
+      .from('gallery_images')
+      .select('*')
+      .eq('is_active', true)
+      .order('created_at', { ascending: false });
+    
+    if (error) {
+      toast({ 
+        title: "Error loading images", 
+        description: error.message, 
+        variant: "destructive" 
+      });
+    } else {
+      setGalleryImages(data || []);
     }
-  ];
+  };
 
   return (
     <div className="min-h-screen">
@@ -68,7 +53,7 @@ const Gallery = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {galleryImages.map((item, index) => (
               <motion.div
-                key={index}
+                key={item.id}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -80,17 +65,17 @@ const Gallery = () => {
                 whileHover={{ y: -8 }}
               >
                 <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none overflow-hidden group bg-card/80 backdrop-blur-sm h-full">
-                  <div className="relative h-64 bg-gradient-to-br from-primary via-accent to-secondary overflow-hidden">
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-smooth" />
-                  <div className="absolute top-4 right-4">
-                    <span className="inline-block bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm font-semibold">
-                      {item.category}
-                    </span>
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={item.image_url} 
+                      alt={item.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-smooth" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                      <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
+                    </div>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                    <h3 className="text-white font-bold text-xl mb-2">{item.title}</h3>
-                  </div>
-                </div>
                   <CardContent className="p-6">
                     <p className="text-muted-foreground">{item.description}</p>
                   </CardContent>
