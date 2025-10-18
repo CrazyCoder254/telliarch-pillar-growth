@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { User, Session } from "@supabase/supabase-js";
+import { isAdminSubdomain } from "@/utils/subdomain";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -18,13 +19,17 @@ const Auth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const isAdmin = isAdminSubdomain();
+    
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
         setTimeout(() => {
-          navigate("/");
+          // On admin subdomain, redirect to admin dashboard
+          // On main domain, redirect to homepage
+          navigate(isAdmin ? "/admin" : "/");
         }, 100);
       }
     });
@@ -34,7 +39,7 @@ const Auth = () => {
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        navigate("/");
+        navigate(isAdmin ? "/admin" : "/");
       }
     });
 
@@ -79,6 +84,8 @@ const Auth = () => {
     return null;
   }
 
+  const isAdmin = isAdminSubdomain();
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted py-12 px-4">
       <Card className="w-full max-w-md shadow-elegant border-none">
@@ -86,11 +93,19 @@ const Auth = () => {
           <div className="w-16 h-16 gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-2xl">T</span>
           </div>
-          <CardTitle className="text-2xl">{isLogin ? "Welcome Back" : "Create Account"}</CardTitle>
+          <CardTitle className="text-2xl">
+            {isAdmin 
+              ? (isLogin ? "Admin Login" : "Admin Registration")
+              : (isLogin ? "Welcome Back" : "Create Account")
+            }
+          </CardTitle>
           <CardDescription>
-            {isLogin
-              ? "Sign in to access your account"
-              : "Sign up to get started with TELLIARCH"}
+            {isAdmin
+              ? "Sign in to access the admin dashboard"
+              : (isLogin
+                  ? "Sign in to access your account"
+                  : "Sign up to get started with TELLIARCH")
+            }
           </CardDescription>
         </CardHeader>
         <CardContent>
