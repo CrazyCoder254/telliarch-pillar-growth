@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { User, Session } from "@supabase/supabase-js";
-import { isAdminSubdomain } from "@/utils/subdomain";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -19,17 +18,13 @@ const Auth = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const isAdmin = isAdminSubdomain();
-    
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
         setTimeout(() => {
-          // On admin subdomain, redirect to admin dashboard
-          // On main domain, redirect to homepage
-          navigate(isAdmin ? "/admin" : "/");
+          navigate("/admin");
         }, 100);
       }
     });
@@ -39,7 +34,7 @@ const Auth = () => {
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        navigate(isAdmin ? "/admin" : "/");
+        navigate("/admin");
       }
     });
 
@@ -84,8 +79,6 @@ const Auth = () => {
     return null;
   }
 
-  const isAdmin = isAdminSubdomain();
-
   return (
     <div className="min-h-screen flex items-center justify-center bg-muted py-12 px-4">
       <Card className="w-full max-w-md shadow-elegant border-none">
@@ -94,18 +87,10 @@ const Auth = () => {
             <span className="text-white font-bold text-2xl">T</span>
           </div>
           <CardTitle className="text-2xl">
-            {isAdmin 
-              ? (isLogin ? "Admin Login" : "Admin Registration")
-              : (isLogin ? "Welcome Back" : "Create Account")
-            }
+            {isLogin ? "Admin Login" : "Admin Registration"}
           </CardTitle>
           <CardDescription>
-            {isAdmin
-              ? "Sign in to access the admin dashboard"
-              : (isLogin
-                  ? "Sign in to access your account"
-                  : "Sign up to get started with TELLIARCH")
-            }
+            Sign in to access the admin dashboard
           </CardDescription>
         </CardHeader>
         <CardContent>
