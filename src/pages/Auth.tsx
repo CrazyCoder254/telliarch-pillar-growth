@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { User, Session } from "@supabase/supabase-js";
+import { authSchema } from "@/lib/validations";
+import { z } from "zod";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -46,6 +48,16 @@ const Auth = () => {
     setLoading(true);
 
     try {
+      // Validate credentials (skip strict password validation for login)
+      if (!isLogin) {
+        authSchema.parse({ email, password });
+      } else {
+        // For login, only validate email format
+        z.object({ 
+          email: z.string().trim().email("Invalid email address") 
+        }).parse({ email });
+      }
+
       if (isLogin) {
         const { error } = await supabase.auth.signInWithPassword({
           email,
@@ -69,7 +81,11 @@ const Auth = () => {
         toast.success("Account created! Please check your email for verification.");
       }
     } catch (error: any) {
-      toast.error(error.message || "An error occurred");
+      if (error instanceof z.ZodError) {
+        toast.error(error.errors[0].message);
+      } else {
+        toast.error(error.message || "An error occurred");
+      }
     } finally {
       setLoading(false);
     }
@@ -111,11 +127,11 @@ const Auth = () => {
               <Input
                 id="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder={isLogin ? "••••••••" : "Min 12 chars with uppercase, lowercase, number & special char"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                minLength={6}
+                minLength={isLogin ? 6 : 12}
               />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>

@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Briefcase, Image, Users, BarChart3, Loader2 } from "lucide-react";
+import { jobSchema, galleryImageSchema, validateImageFile } from "@/lib/validations";
+import { z } from "zod";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -108,6 +110,20 @@ const Admin = () => {
   const handleCreateJob = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate form data
+    try {
+      jobSchema.parse(jobForm);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({ 
+          title: "Validation Error", 
+          description: error.errors[0].message, 
+          variant: "destructive" 
+        });
+        return;
+      }
+    }
+    
     const { data: { user } } = await supabase.auth.getUser();
     
     const { error } = await supabase
@@ -150,9 +166,33 @@ const Admin = () => {
       return;
     }
 
+    // Validate file
+    const fileValidation = validateImageFile(galleryForm.file);
+    if (!fileValidation.valid) {
+      toast({ title: "Invalid File", description: fileValidation.error, variant: "destructive" });
+      return;
+    }
+
+    // Validate form data
+    try {
+      galleryImageSchema.parse({
+        title: galleryForm.title,
+        description: galleryForm.description || undefined,
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({ 
+          title: "Validation Error", 
+          description: error.errors[0].message, 
+          variant: "destructive" 
+        });
+        return;
+      }
+    }
+
     const { data: { user } } = await supabase.auth.getUser();
     const fileExt = galleryForm.file.name.split('.').pop();
-    const fileName = `${Math.random()}.${fileExt}`;
+    const fileName = `${crypto.randomUUID()}.${fileExt}`;
     const filePath = `${fileName}`;
 
     // Upload image to storage
