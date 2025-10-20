@@ -50,7 +50,7 @@ const AdminAuth = () => {
         if (error) throw error;
         toast.success('Signed in successfully');
       } else {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email: validatedData.email,
           password: validatedData.password,
           options: {
@@ -59,7 +59,16 @@ const AdminAuth = () => {
         });
 
         if (error) throw error;
-        toast.success('Account created! Please contact an administrator to assign admin privileges.');
+
+        // Automatically assign admin role
+        if (data.user) {
+          const { error: roleError } = await supabase.rpc('assign_admin_role_to_self');
+          if (roleError) {
+            console.error('Error assigning admin role:', roleError);
+          }
+        }
+
+        toast.success('Admin account created successfully!');
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
