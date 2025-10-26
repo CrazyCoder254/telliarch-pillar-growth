@@ -5,6 +5,7 @@ import Services from "@/components/Services";
 import Values from "@/components/Values";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ChatAssistant from "@/components/ChatAssistant";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <Values />
       <Contact />
       <Footer />
+      <ChatAssistant />
     </div>
   );
 };
