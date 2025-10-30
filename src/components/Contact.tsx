@@ -41,12 +41,12 @@ const Contact = () => {
             {
               icon: Mail,
               title: "Email",
-              content: ["info@telliarch.co.ke", "contact@telliarch.co.ke"]
+              content: ["telliarch@gmail.com"]
             },
             {
               icon: Phone,
               title: "Phone",
-              content: ["+254 XXX XXX XXX", "Available Mon-Fri, 8am-6pm"]
+              content: ["+254 720 599457", "Available Mon-Fri, 8am-6pm"]
             }
           ].map((info, index) => (
             <motion.div
@@ -102,7 +102,7 @@ const Contact = () => {
                     </svg>
                   </a>
                   <a 
-                    href="https://instagram.com/telliarch" 
+                    href="https://www.instagram.com/telliarchltd/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] flex items-center justify-center mx-auto hover:scale-110 transition-smooth"
@@ -118,7 +118,7 @@ const Contact = () => {
                     <Facebook className="w-6 h-6 text-white" />
                   </a>
                   <a 
-                    href="https://linkedin.com/company/telliarch" 
+                    href="https://www.linkedin.com/in/telliarch-ltd-54b050397/" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-[#0A66C2] flex items-center justify-center mx-auto hover:scale-110 transition-smooth"
