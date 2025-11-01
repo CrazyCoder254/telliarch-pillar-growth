@@ -1,6 +1,7 @@
 import { Card, CardContent } from "./ui/card";
 import { Shield, Lightbulb, Star, Users, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import valuesBackground from "@/assets/values-bg.jpg";
 
 const values = [
   {
@@ -32,8 +33,17 @@ const values = [
 
 const Values = () => {
   return (
-    <section id="values" className="py-20 bg-gradient-to-br from-primary/5 via-accent/5 to-secondary/5">
-      <div className="container mx-auto px-4">
+    <section id="values" className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+        style={{ backgroundImage: `url(${valuesBackground})` }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/85 to-background/90" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

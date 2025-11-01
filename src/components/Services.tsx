@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Users, DollarSign, Target, TrendingUp, Heart } from "lucide-react";
 import { motion } from "framer-motion";
+import servicesBackground from "@/assets/services-bg.jpg";
 
 const services = [
   {
@@ -72,8 +73,17 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-background via-accent/5 to-background">
-      <div className="container mx-auto px-4">
+    <section id="services" className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ backgroundImage: `url(${servicesBackground})` }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
