@@ -1,8 +1,14 @@
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
+import { useCountUp } from "@/hooks/useCountUp";
+import { motion } from "framer-motion";
 
 const Hero = () => {
+  const { count: businessesCount, ref: businessesRef } = useCountUp(100, 2000);
+  const { count: servicesCount, ref: servicesRef } = useCountUp(5, 1500);
+  const { count: satisfactionCount, ref: satisfactionRef } = useCountUp(98, 2500);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -29,9 +35,23 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white space-y-8">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-in fade-in slide-in-from-bottom duration-700">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-2xl md:text-3xl font-semibold mb-4 text-secondary"
+          >
+            Welcome to Telliarch Limited
+          </motion.div>
+
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+          >
             Empowering Businesses to Achieve Excellence
-          </h1>
+          </motion.h1>
           
           <p className="text-xl md:text-2xl text-white/90 leading-relaxed animate-in fade-in slide-in-from-bottom duration-700 delay-200">
             Strategic consultancy solutions in Human Resource, Finance, Marketing, 
@@ -59,18 +79,42 @@ const Hero = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-white/20">
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-secondary">100+</h3>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 ref={businessesRef} className="text-4xl font-bold text-secondary">
+                {businessesCount}+
+              </h3>
               <p className="text-white/80 mt-2">Businesses Served</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-secondary">5</h3>
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h3 ref={servicesRef} className="text-4xl font-bold text-secondary">
+                {servicesCount}
+              </h3>
               <p className="text-white/80 mt-2">Core Services</p>
-            </div>
-            <div className="text-center">
-              <h3 className="text-4xl font-bold text-secondary">98%</h3>
+            </motion.div>
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <h3 ref={satisfactionRef} className="text-4xl font-bold text-secondary">
+                {satisfactionCount}%
+              </h3>
               <p className="text-white/80 mt-2">Client Satisfaction</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

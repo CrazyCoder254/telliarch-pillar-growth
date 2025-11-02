@@ -1,11 +1,21 @@
 import { Card, CardContent } from "./ui/card";
 import { Target, Eye, Award } from "lucide-react";
 import { motion } from "framer-motion";
+import aboutBackground from "@/assets/about-bg.jpg";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gradient-to-br from-background via-muted/30 to-background">
-      <div className="container mx-auto px-4">
+    <section id="about" className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ backgroundImage: `url(${aboutBackground})` }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/85 to-background/90" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="max-w-4xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}

@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { ThemeToggle } from "./ThemeToggle";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,11 +69,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">T</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">TELLIARCH</span>
+          <Link to="/" className="flex items-center space-x-3">
+            <img src={logo} alt="Telliarch Limited Logo" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Menu */}

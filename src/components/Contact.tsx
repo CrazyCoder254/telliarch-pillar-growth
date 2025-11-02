@@ -2,11 +2,21 @@ import { Card, CardContent } from "./ui/card";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
+import contactBackground from "@/assets/contact-bg.jpg";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-background to-accent/10">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="relative py-20 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
+        style={{ backgroundImage: `url(${contactBackground})` }}
+      />
+      
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/85 to-background/90" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           className="max-w-3xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
