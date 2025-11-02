@@ -70,7 +70,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3">
-            <img src={logo} alt="Telliarch Limited Logo" className="h-12 w-auto" />
+            <img src={logo} alt="Telliarch Limited Logo" className="h-16 md:h-20 w-auto" />
           </Link>
 
           {/* Desktop Menu */}

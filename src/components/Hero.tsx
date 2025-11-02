@@ -2,12 +2,25 @@ import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import heroBackground from "@/assets/hero-bg.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const Hero = () => {
   const { count: businessesCount, ref: businessesRef } = useCountUp(100, 2000);
   const { count: servicesCount, ref: servicesRef } = useCountUp(5, 1500);
   const { count: satisfactionCount, ref: satisfactionRef } = useCountUp(98, 2500);
+  const [showWelcome, setShowWelcome] = useState(true);
+
+  const welcomeText = "Welcome to Telliarch Limited";
+
+  useEffect(() => {
+    // Fade away after letter animation completes
+    const timer = setTimeout(() => {
+      setShowWelcome(false);
+    }, welcomeText.length * 50 + 2000); // letter delay * length + extra time
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -35,19 +48,31 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white space-y-8">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-2xl md:text-3xl font-semibold mb-4 text-secondary"
-          >
-            Welcome to Telliarch Limited
-          </motion.div>
+          <AnimatePresence>
+            {showWelcome && (
+              <motion.div
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="text-2xl md:text-3xl font-semibold mb-4 text-secondary"
+              >
+                {welcomeText.split("").map((char, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.1, delay: index * 0.05 }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <motion.h1 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
             className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
           >
             Empowering Businesses to Achieve Excellence
