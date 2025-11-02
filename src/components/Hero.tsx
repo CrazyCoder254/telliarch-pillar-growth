@@ -4,6 +4,7 @@ import heroBackground from "@/assets/hero-bg.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import confetti from "canvas-confetti";
 
 const Hero = () => {
   const { count: businessesCount, ref: businessesRef } = useCountUp(100, 2000);
@@ -14,12 +15,45 @@ const Hero = () => {
   const welcomeText = "Welcome to Telliarch Limited";
 
   useEffect(() => {
+    // Trigger confetti celebration
+    const duration = 3000;
+    const animationEnd = Date.now() + duration;
+    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+    const randomInRange = (min: number, max: number) => {
+      return Math.random() * (max - min) + min;
+    };
+
+    const interval = setInterval(() => {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+      });
+      confetti({
+        ...defaults,
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+      });
+    }, 250);
+
     // Fade away after letter animation completes
     const timer = setTimeout(() => {
       setShowWelcome(false);
-    }, welcomeText.length * 50 + 2000); // letter delay * length + extra time
+    }, welcomeText.length * 50 + 2000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -53,18 +87,32 @@ const Hero = () => {
               <motion.div
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
-                className="text-2xl md:text-3xl font-semibold mb-4 text-secondary"
+                className="text-2xl md:text-4xl font-bold mb-4"
               >
-                {welcomeText.split("").map((char, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.1, delay: index * 0.05 }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
+                {welcomeText.split("").map((char, index) => {
+                  const colors = [
+                    "text-red-400",
+                    "text-yellow-400",
+                    "text-green-400",
+                    "text-blue-400",
+                    "text-purple-400",
+                    "text-pink-400",
+                    "text-orange-400"
+                  ];
+                  const colorClass = colors[index % colors.length];
+                  
+                  return (
+                    <motion.span
+                      key={index}
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.1, delay: index * 0.05 }}
+                      className={colorClass}
+                    >
+                      {char}
+                    </motion.span>
+                  );
+                })}
               </motion.div>
             )}
           </AnimatePresence>

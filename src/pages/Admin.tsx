@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAdmin } from "@/hooks/useAdmin";
-import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -273,9 +272,7 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar />
-      
-      <section className="pt-32 pb-20 gradient-hero">
+      <section className="pt-20 pb-20 gradient-hero">
         <div className="container mx-auto px-4">
           <h1 className="text-white mb-4">Admin Dashboard</h1>
           <p className="text-xl text-white/90">Manage your site content and view analytics</p>
@@ -285,21 +282,21 @@ const Admin = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="analytics" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="analytics">
-                <BarChart3 className="mr-2 h-4 w-4" />
+            <TabsList className="grid w-full grid-cols-4 mb-8 h-auto p-2">
+              <TabsTrigger value="analytics" className="text-base md:text-lg py-4">
+                <BarChart3 className="mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Analytics
               </TabsTrigger>
-              <TabsTrigger value="jobs">
-                <Briefcase className="mr-2 h-4 w-4" />
-                Jobs
+              <TabsTrigger value="jobs" className="text-base md:text-lg py-4 bg-primary/10 data-[state=active]:bg-primary">
+                <Briefcase className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+                Job Gallery
               </TabsTrigger>
-              <TabsTrigger value="gallery">
-                <Image className="mr-2 h-4 w-4" />
+              <TabsTrigger value="gallery" className="text-base md:text-lg py-4">
+                <Image className="mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Gallery
               </TabsTrigger>
-              <TabsTrigger value="users">
-                <Users className="mr-2 h-4 w-4" />
+              <TabsTrigger value="users" className="text-base md:text-lg py-4 bg-accent/10 data-[state=active]:bg-accent">
+                <Users className="mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Users
               </TabsTrigger>
             </TabsList>
