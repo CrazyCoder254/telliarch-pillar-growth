@@ -16,7 +16,7 @@ const Footer = () => {
             <p className="font-semibold text-lg mb-4">Follow Us</p>
             <div className="flex justify-center gap-4">
               <a 
-                href="https://wa.me/254XXXXXXXXX" 
+                href="https://wa.me/254720599457" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-secondary hover:bg-secondary/90 transition-smooth flex items-center justify-center"
