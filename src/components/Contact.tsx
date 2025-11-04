@@ -102,7 +102,7 @@ const Contact = () => {
                 <h3 className="font-bold mb-4 text-primary text-xl">Connect With Us</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <a 
-                    href="https://wa.me/254XXXXXXXXX" 
+                    href="https://wa.me/254720599457" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-[#25D366] flex items-center justify-center mx-auto hover:scale-110 transition-smooth"
