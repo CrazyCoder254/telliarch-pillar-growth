@@ -51,40 +51,49 @@ const Contact = () => {
             {
               icon: Mail,
               title: "Email",
-              content: ["telliarch@gmail.com"]
+              content: ["telliarch@gmail.com"],
+              link: "mailto:telliarch@gmail.com"
             },
             {
               icon: Phone,
               title: "Phone",
-              content: ["+254 720 599457", "Available Mon-Fri, 8am-6pm"]
+              content: ["+254 720 599457", "Available Mon-Fri, 8am-6pm"],
+              link: "tel:+254720599457"
             }
-          ].map((info, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ 
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center group bg-card/80 backdrop-blur-sm h-full">
-                <CardContent className="p-8">
-                  <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-smooth">
-                    <info.icon className="text-white" size={28} />
-                  </div>
-                  <h3 className="font-bold mb-3 text-primary text-xl">{info.title}</h3>
-                  <p className="text-muted-foreground">
-                    {info.content[0]}<br />
-                    {info.content[1]}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+          ].map((info, index) => {
+            const CardWrapper = info.link ? 'a' : 'div';
+            const wrapperProps = info.link ? { href: info.link } : {};
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <CardWrapper {...wrapperProps} className={info.link ? "block" : ""}>
+                  <Card className="shadow-elegant hover:shadow-glow transition-smooth border-none text-center group bg-card/80 backdrop-blur-sm h-full cursor-pointer">
+                    <CardContent className="p-8">
+                      <div className="w-16 h-16 gradient-accent rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-smooth">
+                        <info.icon className="text-white" size={28} />
+                      </div>
+                      <h3 className="font-bold mb-3 text-primary text-xl">{info.title}</h3>
+                      <p className="text-muted-foreground">
+                        {info.content[0]}<br />
+                        {info.content[1]}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </CardWrapper>
+              </motion.div>
+            );
+          })}
 
           <motion.div
             initial={{ opacity: 0, x: -30 }}
