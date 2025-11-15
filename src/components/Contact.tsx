@@ -51,8 +51,8 @@ const Contact = () => {
             {
               icon: Mail,
               title: "Email",
-              content: ["telliarch@gmail.com"],
-              link: "mailto:telliarch@gmail.com"
+              content: ["info@telliarch.co.ke"],
+              link: "mailto:info@telliarch.co.ke"
             },
             {
               icon: Phone,
