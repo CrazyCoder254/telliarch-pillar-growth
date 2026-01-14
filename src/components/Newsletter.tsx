@@ -4,6 +4,7 @@ import { Input } from "./ui/input";
 import { motion } from "framer-motion";
 import { Mail, Send, CheckCircle, Newspaper } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import newsletterBg from "@/assets/hero-bg-3.jpg";
 
 const Newsletter = () => {
@@ -26,16 +27,31 @@ const Newsletter = () => {
 
     setIsLoading(true);
     
-    // Simulate subscription (you can connect to a real newsletter service later)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    setIsSubscribed(true);
-    setIsLoading(false);
-    toast({
-      title: "Successfully Subscribed!",
-      description: "Thank you for subscribing to our newsletter.",
-    });
-    setEmail("");
+    try {
+      const { data, error } = await supabase.functions.invoke("newsletter-subscribe", {
+        body: { email },
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      setIsSubscribed(true);
+      toast({
+        title: "Successfully Subscribed!",
+        description: data.message || "Thank you for subscribing to our newsletter.",
+      });
+      setEmail("");
+    } catch (error: unknown) {
+      console.error("Subscription error:", error);
+      toast({
+        title: "Subscription Failed",
+        description: "There was an error subscribing. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
