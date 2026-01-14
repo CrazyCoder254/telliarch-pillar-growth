@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Users, DollarSign, Target, TrendingUp, Heart } from "lucide-react";
+import { Users, DollarSign, Target, TrendingUp, Heart, Compass } from "lucide-react";
 import { motion } from "framer-motion";
 import servicesBackground from "@/assets/services-bg.jpg";
 
@@ -58,15 +58,28 @@ const services = [
   },
   {
     icon: Heart,
-    title: "Guidance & Counselling",
-    description: "Mental wellness solutions for individuals and organizations to enhance productivity.",
+    title: "Mental Health & Wellness Solutions",
+    description: "Comprehensive mental wellness programs for individuals and organizations to enhance productivity and well-being.",
     details: [
-      "Individual Counseling",
+      "Guidance and Counseling",
+      "Individual Therapy Sessions",
       "Corporate Wellness Programs",
       "Stress Management",
       "Work-Life Balance Consultation",
-      "Team Building Support",
       "Emotional Intelligence Development"
+    ]
+  },
+  {
+    icon: Compass,
+    title: "Mentorship & Coaching",
+    description: "Personalized mentorship and coaching programs designed for individuals and institutions to unlock potential.",
+    details: [
+      "One-on-One Mentorship",
+      "Leadership Coaching",
+      "Career Development Guidance",
+      "Institutional Training Programs",
+      "Executive Coaching",
+      "Personal Growth Workshops"
     ]
   }
 ];
