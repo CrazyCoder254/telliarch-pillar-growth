@@ -10,7 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Briefcase, Image, Users, BarChart3, Loader2 } from "lucide-react";
+import { Briefcase, Image, Users, BarChart3, Loader2, Mail } from "lucide-react";
+import NewsletterManager from "@/components/admin/NewsletterManager";
 import { jobSchema, galleryImageSchema, validateImageFile } from "@/lib/validations";
 import { z } from "zod";
 
@@ -282,14 +283,18 @@ const Admin = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="analytics" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8 h-auto p-2">
+            <TabsList className="grid w-full grid-cols-5 mb-8 h-auto p-2">
               <TabsTrigger value="analytics" className="text-base md:text-lg py-4">
                 <BarChart3 className="mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Analytics
               </TabsTrigger>
+              <TabsTrigger value="newsletter" className="text-base md:text-lg py-4">
+                <Mail className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+                Newsletter
+              </TabsTrigger>
               <TabsTrigger value="jobs" className="text-base md:text-lg py-4 bg-primary/10 data-[state=active]:bg-primary">
                 <Briefcase className="mr-2 h-5 w-5 md:h-6 md:w-6" />
-                Job Gallery
+                Jobs
               </TabsTrigger>
               <TabsTrigger value="gallery" className="text-base md:text-lg py-4">
                 <Image className="mr-2 h-5 w-5 md:h-6 md:w-6" />
@@ -337,6 +342,10 @@ const Admin = () => {
                   </CardContent>
                 </Card>
               </div>
+            </TabsContent>
+
+            <TabsContent value="newsletter">
+              <NewsletterManager />
             </TabsContent>
 
             <TabsContent value="jobs">
