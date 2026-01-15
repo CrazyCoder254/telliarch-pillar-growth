@@ -283,62 +283,62 @@ const Admin = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="analytics" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 mb-8 h-auto p-2">
-              <TabsTrigger value="analytics" className="text-base md:text-lg py-4">
-                <BarChart3 className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+            <TabsList className="grid w-full grid-cols-5 mb-6 h-auto p-1">
+              <TabsTrigger value="analytics" className="text-xs md:text-sm py-2">
+                <BarChart3 className="mr-1.5 h-4 w-4" />
                 Analytics
               </TabsTrigger>
-              <TabsTrigger value="newsletter" className="text-base md:text-lg py-4">
-                <Mail className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+              <TabsTrigger value="newsletter" className="text-xs md:text-sm py-2">
+                <Mail className="mr-1.5 h-4 w-4" />
                 Newsletter
               </TabsTrigger>
-              <TabsTrigger value="jobs" className="text-base md:text-lg py-4 bg-primary/10 data-[state=active]:bg-primary">
-                <Briefcase className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+              <TabsTrigger value="jobs" className="text-xs md:text-sm py-2">
+                <Briefcase className="mr-1.5 h-4 w-4" />
                 Jobs
               </TabsTrigger>
-              <TabsTrigger value="gallery" className="text-base md:text-lg py-4">
-                <Image className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+              <TabsTrigger value="gallery" className="text-xs md:text-sm py-2">
+                <Image className="mr-1.5 h-4 w-4" />
                 Gallery
               </TabsTrigger>
-              <TabsTrigger value="users" className="text-base md:text-lg py-4 bg-accent/10 data-[state=active]:bg-accent">
-                <Users className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+              <TabsTrigger value="users" className="text-xs md:text-sm py-2">
+                <Users className="mr-1.5 h-4 w-4" />
                 Users
               </TabsTrigger>
             </TabsList>
 
             <TabsContent value="analytics">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <Card className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-primary" />
+                  <CardHeader className="pb-2">
+                    <CardTitle className="flex items-center gap-2 text-sm">
+                      <Users className="h-4 w-4 text-primary" />
                       Total Users
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-4xl font-bold">{analytics.totalUsers}</p>
+                    <p className="text-2xl font-bold">{analytics.totalUsers}</p>
                   </CardContent>
                 </Card>
                 <Card className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Briefcase className="h-5 w-5 text-primary" />
+                  <CardHeader className="pb-2">
+                    <CardTitle className="flex items-center gap-2 text-sm">
+                      <Briefcase className="h-4 w-4 text-primary" />
                       Total Jobs
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-4xl font-bold">{analytics.totalJobs}</p>
+                    <p className="text-2xl font-bold">{analytics.totalJobs}</p>
                   </CardContent>
                 </Card>
                 <Card className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Image className="h-5 w-5 text-primary" />
+                  <CardHeader className="pb-2">
+                    <CardTitle className="flex items-center gap-2 text-sm">
+                      <Image className="h-4 w-4 text-primary" />
                       Gallery Images
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-4xl font-bold">{analytics.totalImages}</p>
+                    <p className="text-2xl font-bold">{analytics.totalImages}</p>
                   </CardContent>
                 </Card>
               </div>

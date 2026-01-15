@@ -133,44 +133,44 @@ const NewsletterManager = () => {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <Tabs defaultValue="compose" className="w-full">
-        <TabsList className="grid w-full grid-cols-4 mb-6">
-          <TabsTrigger value="compose" className="flex items-center gap-2">
-            <Send className="h-4 w-4" />
+        <TabsList className="grid w-full grid-cols-4 mb-4">
+          <TabsTrigger value="compose" className="flex items-center gap-1.5 text-xs">
+            <Send className="h-3.5 w-3.5" />
             Compose
           </TabsTrigger>
-          <TabsTrigger value="subscribers" className="flex items-center gap-2">
-            <Users className="h-4 w-4" />
+          <TabsTrigger value="subscribers" className="flex items-center gap-1.5 text-xs">
+            <Users className="h-3.5 w-3.5" />
             Subscribers ({subscribers.filter(s => s.is_active).length})
           </TabsTrigger>
-          <TabsTrigger value="services" className="flex items-center gap-2">
-            <Mail className="h-4 w-4" />
-            Service Subs ({serviceSubscriptions.filter(s => s.is_active).length})
+          <TabsTrigger value="services" className="flex items-center gap-1.5 text-xs">
+            <Mail className="h-3.5 w-3.5" />
+            Service ({serviceSubscriptions.filter(s => s.is_active).length})
           </TabsTrigger>
-          <TabsTrigger value="history" className="flex items-center gap-2">
-            <History className="h-4 w-4" />
+          <TabsTrigger value="history" className="flex items-center gap-1.5 text-xs">
+            <History className="h-3.5 w-3.5" />
             History
           </TabsTrigger>
         </TabsList>
 
         <TabsContent value="compose">
           <Card className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Send className="h-5 w-5 text-primary" />
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-sm">
+                <Send className="h-4 w-4 text-primary" />
                 Compose Newsletter
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSendNewsletter} className="space-y-4">
-                <div>
-                  <Label htmlFor="audience">Target Audience</Label>
+            <CardContent className="pt-3">
+              <form onSubmit={handleSendNewsletter} className="space-y-3">
+                <div className="space-y-1">
+                  <Label htmlFor="audience" className="text-xs">Target Audience</Label>
                   <Select
                     value={newsletterForm.serviceFilter}
                     onValueChange={(value) => setNewsletterForm({ ...newsletterForm, serviceFilter: value })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="text-sm h-9">
                       <SelectValue placeholder="Select audience" />
                     </SelectTrigger>
                     <SelectContent>
@@ -183,36 +183,38 @@ const NewsletterManager = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <div>
-                  <Label htmlFor="subject">Subject</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="subject" className="text-xs">Subject</Label>
                   <Input
                     id="subject"
                     value={newsletterForm.subject}
                     onChange={(e) => setNewsletterForm({ ...newsletterForm, subject: e.target.value })}
                     placeholder="Newsletter subject..."
+                    className="text-sm h-9"
                     required
                   />
                 </div>
-                <div>
-                  <Label htmlFor="content">Content</Label>
+                <div className="space-y-1">
+                  <Label htmlFor="content" className="text-xs">Content</Label>
                   <Textarea
                     id="content"
                     value={newsletterForm.content}
                     onChange={(e) => setNewsletterForm({ ...newsletterForm, content: e.target.value })}
                     placeholder="Write your newsletter content here..."
-                    rows={8}
+                    rows={5}
+                    className="text-sm"
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full" disabled={isSending}>
+                <Button type="submit" className="w-full h-9 text-sm" disabled={isSending}>
                   {isSending ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      <Loader2 className="mr-1.5 h-3.5 w-3.5 animate-spin" />
                       Sending...
                     </>
                   ) : (
                     <>
-                      <Send className="mr-2 h-4 w-4" />
+                      <Send className="mr-1.5 h-3.5 w-3.5" />
                       Send Newsletter
                     </>
                   )}
@@ -224,26 +226,26 @@ const NewsletterManager = () => {
 
         <TabsContent value="subscribers">
           <Card className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-primary" />
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-sm">
+                <Users className="h-4 w-4 text-primary" />
                 Newsletter Subscribers
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-3 max-h-96 overflow-y-auto">
+            <CardContent className="pt-3">
+              <div className="space-y-2 max-h-80 overflow-y-auto">
                 {subscribers.length === 0 ? (
-                  <p className="text-muted-foreground text-center py-4">No subscribers yet</p>
+                  <p className="text-muted-foreground text-center py-3 text-sm">No subscribers yet</p>
                 ) : (
                   subscribers.map((subscriber) => (
-                    <div key={subscriber.id} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+                    <div key={subscriber.id} className="flex items-center justify-between p-2 bg-muted/50 rounded-lg">
                       <div>
-                        <p className="font-medium">{subscriber.email}</p>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm font-medium">{subscriber.email}</p>
+                        <p className="text-xs text-muted-foreground">
                           Joined {new Date(subscriber.subscribed_at).toLocaleDateString()}
                         </p>
                       </div>
-                      <Badge variant={subscriber.is_active ? "default" : "secondary"}>
+                      <Badge variant={subscriber.is_active ? "default" : "secondary"} className="text-xs">
                         {subscriber.is_active ? "Active" : "Inactive"}
                       </Badge>
                     </div>
@@ -255,27 +257,27 @@ const NewsletterManager = () => {
         </TabsContent>
 
         <TabsContent value="services">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {SERVICES.map((service) => {
               const serviceSubs = serviceSubscriptions.filter(s => s.service_name === service);
               return (
                 <Card key={service} className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-                  <CardHeader className="pb-2">
-                    <CardTitle className="text-lg flex items-center justify-between">
-                      {service}
-                      <Badge>{serviceSubs.filter(s => s.is_active).length}</Badge>
+                  <CardHeader className="pb-1 pt-3 px-3">
+                    <CardTitle className="text-xs flex items-center justify-between">
+                      <span className="truncate">{service}</span>
+                      <Badge className="text-xs ml-1">{serviceSubs.filter(s => s.is_active).length}</Badge>
                     </CardTitle>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-2 max-h-40 overflow-y-auto">
+                  <CardContent className="px-3 pb-3">
+                    <div className="space-y-1 max-h-28 overflow-y-auto">
                       {serviceSubs.length === 0 ? (
-                        <p className="text-sm text-muted-foreground">No subscribers</p>
+                        <p className="text-xs text-muted-foreground">No subscribers</p>
                       ) : (
                         serviceSubs.map((sub) => (
-                          <div key={sub.id} className="flex items-center justify-between text-sm p-2 bg-muted/30 rounded">
-                            <span>{sub.email}</span>
-                            <Badge variant={sub.is_active ? "outline" : "secondary"} className="text-xs">
-                              {sub.is_active ? "Active" : "Inactive"}
+                          <div key={sub.id} className="flex items-center justify-between text-xs p-1.5 bg-muted/30 rounded">
+                            <span className="truncate">{sub.email}</span>
+                            <Badge variant={sub.is_active ? "outline" : "secondary"} className="text-[10px] px-1">
+                              {sub.is_active ? "Active" : "Off"}
                             </Badge>
                           </div>
                         ))
@@ -290,28 +292,28 @@ const NewsletterManager = () => {
 
         <TabsContent value="history">
           <Card className="bg-card/80 backdrop-blur-sm border-none shadow-elegant">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <History className="h-5 w-5 text-primary" />
+            <CardHeader className="pb-2">
+              <CardTitle className="flex items-center gap-2 text-sm">
+                <History className="h-4 w-4 text-primary" />
                 Sent Newsletters
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-4 max-h-96 overflow-y-auto">
+            <CardContent className="pt-3">
+              <div className="space-y-3 max-h-80 overflow-y-auto">
                 {sentNewsletters.length === 0 ? (
-                  <p className="text-muted-foreground text-center py-4">No newsletters sent yet</p>
+                  <p className="text-muted-foreground text-center py-3 text-sm">No newsletters sent yet</p>
                 ) : (
                   sentNewsletters.map((newsletter) => (
-                    <div key={newsletter.id} className="p-4 bg-muted/50 rounded-lg">
-                      <div className="flex items-start justify-between mb-2">
-                        <h4 className="font-semibold">{newsletter.subject}</h4>
-                        <Badge variant="outline">{newsletter.recipient_count} recipients</Badge>
+                    <div key={newsletter.id} className="p-3 bg-muted/50 rounded-lg">
+                      <div className="flex items-start justify-between mb-1">
+                        <h4 className="text-sm font-semibold">{newsletter.subject}</h4>
+                        <Badge variant="outline" className="text-xs">{newsletter.recipient_count} sent</Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2 line-clamp-2">{newsletter.content}</p>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <p className="text-xs text-muted-foreground mb-1.5 line-clamp-2">{newsletter.content}</p>
+                      <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
                         <span>{new Date(newsletter.sent_at).toLocaleString()}</span>
                         {newsletter.service_filter && (
-                          <Badge variant="secondary" className="text-xs">{newsletter.service_filter}</Badge>
+                          <Badge variant="secondary" className="text-[10px]">{newsletter.service_filter}</Badge>
                         )}
                       </div>
                     </div>
