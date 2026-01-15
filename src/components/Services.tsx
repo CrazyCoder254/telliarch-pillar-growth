@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Users, DollarSign, Target, TrendingUp, Heart, Compass } from "lucide-react";
+import { Users, DollarSign, Target, TrendingUp, Heart, Compass, Bell } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
 import servicesBackground from "@/assets/services-bg.jpg";
+import ServiceSubscribeDialog from "./ServiceSubscribeDialog";
 
 const services = [
   {
@@ -85,6 +88,8 @@ const services = [
 ];
 
 const Services = () => {
+  const [selectedService, setSelectedService] = useState<string | null>(null);
+
   return (
     <section id="services" className="relative py-24 overflow-hidden">
       {/* Background Image with Enhanced Visibility */}
@@ -169,7 +174,7 @@ const Services = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-white/80 mb-4">{service.description}</p>
-                  <ul className="space-y-2">
+                  <ul className="space-y-2 mb-4">
                     {service.details.map((detail, idx) => (
                       <motion.li 
                         key={idx} 
@@ -184,12 +189,27 @@ const Services = () => {
                       </motion.li>
                     ))}
                   </ul>
+                  <Button
+                    variant="secondary"
+                    size="sm"
+                    className="w-full mt-2"
+                    onClick={() => setSelectedService(service.title)}
+                  >
+                    <Bell className="mr-2 h-4 w-4" />
+                    Subscribe to Updates
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <ServiceSubscribeDialog
+        open={!!selectedService}
+        onOpenChange={(open) => !open && setSelectedService(null)}
+        serviceName={selectedService || ""}
+      />
     </section>
   );
 };

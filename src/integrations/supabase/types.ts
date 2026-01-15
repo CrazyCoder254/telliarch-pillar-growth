@@ -128,6 +128,63 @@ export type Database = {
         }
         Relationships: []
       }
+      sent_newsletters: {
+        Row: {
+          content: string
+          id: string
+          recipient_count: number
+          sent_at: string
+          sent_by: string | null
+          service_filter: string | null
+          subject: string
+        }
+        Insert: {
+          content: string
+          id?: string
+          recipient_count?: number
+          sent_at?: string
+          sent_by?: string | null
+          service_filter?: string | null
+          subject: string
+        }
+        Update: {
+          content?: string
+          id?: string
+          recipient_count?: number
+          sent_at?: string
+          sent_by?: string | null
+          service_filter?: string | null
+          subject?: string
+        }
+        Relationships: []
+      }
+      service_subscriptions: {
+        Row: {
+          email: string
+          id: string
+          is_active: boolean
+          service_name: string
+          subscribed_at: string
+          unsubscribed_at: string | null
+        }
+        Insert: {
+          email: string
+          id?: string
+          is_active?: boolean
+          service_name: string
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+        }
+        Update: {
+          email?: string
+          id?: string
+          is_active?: boolean
+          service_name?: string
+          subscribed_at?: string
+          unsubscribed_at?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
