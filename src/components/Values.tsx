@@ -71,7 +71,7 @@ const Values = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-white text-4xl md:text-5xl font-bold drop-shadow-lg">Our Core Values</h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">Our Core </span><span className="text-gold-gradient">Values</span></h2>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
             animate={{ 
@@ -88,7 +88,7 @@ const Values = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {values.map((value, index) => (
             <motion.div
               key={index}
@@ -100,18 +100,19 @@ const Values = () => {
                 delay: index * 0.12,
                 ease: "easeOut"
               }}
-              whileHover={{ scale: 1.05, y: -5 }}
+              whileHover={{ rotateY: 12, rotateX: -8, scale: 1.05, y: -8 }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <Card className="shadow-2xl hover:shadow-secondary/30 transition-all duration-500 border-none text-center bg-white/10 backdrop-blur-md group h-full border border-white/20">
+              <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none text-center bg-white/10 backdrop-blur-md group h-full border border-white/20">
                 <CardContent className="p-8">
                   <motion.div 
-                    className="w-20 h-20 gradient-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+                    className="w-20 h-20 gradient-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg ring-2 ring-secondary/50"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <value.icon className="text-white" size={36} />
+                    <value.icon className="text-secondary" size={36} />
                   </motion.div>
-                  <h3 className="text-xl font-bold mb-4 text-white">{value.title}</h3>
+                  <h3 className="text-xl font-bold mb-4 text-secondary">{value.title}</h3>
                   <p className="text-white/80">{value.description}</p>
                 </CardContent>
               </Card>
