@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { ThemeToggle } from "./ThemeToggle";
+import TopBar from "./TopBar";
 import logo from "@/assets/logo.png";
 
 const Navbar = () => {
@@ -64,10 +65,11 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
         isScrolled
           ? "bg-background/95 backdrop-blur-lg shadow-elegant"
-          : "bg-transparent"
+          : "bg-background/80 backdrop-blur-sm"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <TopBar />
+      <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center flex-1 max-w-xs">
             <img src={logo} alt="Telliarch Limited Logo" className="h-20 md:h-24 lg:h-28 w-full object-contain" />
