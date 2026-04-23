@@ -129,7 +129,7 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-white text-4xl md:text-5xl font-bold drop-shadow-lg">Our Services</h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-gold-gradient">Our Services</span></h2>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
             animate={{ 
@@ -147,7 +147,7 @@ const Services = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -159,18 +159,19 @@ const Services = () => {
                 delay: index * 0.1,
                 ease: "easeOut"
               }}
-              whileHover={{ y: -10, scale: 1.02 }}
+              whileHover={{ rotateY: 8, rotateX: -6, y: -10, scale: 1.03 }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <Card className="shadow-2xl hover:shadow-secondary/30 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20">
+              <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20">
                 <CardHeader>
                   <motion.div 
-                    className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 shadow-lg"
+                    className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 shadow-lg ring-2 ring-secondary/40"
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <service.icon className="text-white" size={28} />
+                    <service.icon className="text-secondary" size={28} />
                   </motion.div>
-                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-secondary">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-white/80 mb-4">{service.description}</p>

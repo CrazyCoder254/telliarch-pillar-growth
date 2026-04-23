@@ -43,7 +43,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-white text-4xl md:text-5xl font-bold drop-shadow-lg">About TELLIARCH LIMITED</h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">About </span><span className="text-gold-gradient">TELLIARCH LIMITED</span></h2>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
             animate={{ 
@@ -63,7 +63,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 perspective-1000">
           {[
             {
               icon: Target,
@@ -91,18 +91,19 @@ const About = () => {
                 delay: index * 0.2,
                 ease: "easeOut"
               }}
-              whileHover={{ y: -10, scale: 1.02 }}
+              whileHover={{ rotateY: 10, rotateX: -8, y: -10, scale: 1.03 }}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <Card className="shadow-2xl hover:shadow-secondary/30 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20">
+              <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20">
                 <CardContent className="p-8 text-center">
                   <motion.div 
-                    className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg"
+                    className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg ring-2 ring-secondary/50"
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <item.icon className="text-white" size={36} />
+                    <item.icon className="text-secondary" size={36} />
                   </motion.div>
-                  <h3 className="mb-4 text-2xl text-white font-bold">{item.title}</h3>
+                  <h3 className="mb-4 text-2xl text-secondary font-bold">{item.title}</h3>
                   <p className="text-white/80 leading-relaxed">
                     {item.description}
                   </p>
