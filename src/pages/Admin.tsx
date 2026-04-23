@@ -10,8 +10,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Briefcase, Image, Users, BarChart3, Loader2, Mail } from "lucide-react";
+import { Briefcase, Image, Users, BarChart3, Loader2, Mail, FileText, Handshake } from "lucide-react";
 import NewsletterManager from "@/components/admin/NewsletterManager";
+import BlogManager from "@/components/admin/BlogManager";
+import PartnersManager from "@/components/admin/PartnersManager";
 import { jobSchema, galleryImageSchema, validateImageFile } from "@/lib/validations";
 import { z } from "zod";
 
@@ -283,25 +285,33 @@ const Admin = () => {
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <Tabs defaultValue="analytics" className="w-full">
-            <TabsList className="grid w-full grid-cols-5 mb-6 h-auto p-1">
-              <TabsTrigger value="analytics" className="text-xs md:text-sm py-2">
-                <BarChart3 className="mr-1.5 h-4 w-4" />
+            <TabsList className="grid w-full grid-cols-4 md:grid-cols-7 mb-6 h-auto p-1">
+              <TabsTrigger value="analytics" className="text-xs py-2">
+                <BarChart3 className="mr-1 h-3.5 w-3.5" />
                 Analytics
               </TabsTrigger>
-              <TabsTrigger value="newsletter" className="text-xs md:text-sm py-2">
-                <Mail className="mr-1.5 h-4 w-4" />
+              <TabsTrigger value="newsletter" className="text-xs py-2">
+                <Mail className="mr-1 h-3.5 w-3.5" />
                 Newsletter
               </TabsTrigger>
-              <TabsTrigger value="jobs" className="text-xs md:text-sm py-2">
-                <Briefcase className="mr-1.5 h-4 w-4" />
+              <TabsTrigger value="blog" className="text-xs py-2">
+                <FileText className="mr-1 h-3.5 w-3.5" />
+                Blog
+              </TabsTrigger>
+              <TabsTrigger value="partners" className="text-xs py-2">
+                <Handshake className="mr-1 h-3.5 w-3.5" />
+                Partners
+              </TabsTrigger>
+              <TabsTrigger value="jobs" className="text-xs py-2">
+                <Briefcase className="mr-1 h-3.5 w-3.5" />
                 Jobs
               </TabsTrigger>
-              <TabsTrigger value="gallery" className="text-xs md:text-sm py-2">
-                <Image className="mr-1.5 h-4 w-4" />
+              <TabsTrigger value="gallery" className="text-xs py-2">
+                <Image className="mr-1 h-3.5 w-3.5" />
                 Gallery
               </TabsTrigger>
-              <TabsTrigger value="users" className="text-xs md:text-sm py-2">
-                <Users className="mr-1.5 h-4 w-4" />
+              <TabsTrigger value="users" className="text-xs py-2">
+                <Users className="mr-1 h-3.5 w-3.5" />
                 Users
               </TabsTrigger>
             </TabsList>
@@ -346,6 +356,14 @@ const Admin = () => {
 
             <TabsContent value="newsletter">
               <NewsletterManager />
+            </TabsContent>
+
+            <TabsContent value="blog">
+              <BlogManager />
+            </TabsContent>
+
+            <TabsContent value="partners">
+              <PartnersManager />
             </TabsContent>
 
             <TabsContent value="jobs">
