@@ -1,208 +1,83 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Users, DollarSign, Target, TrendingUp, Heart, Compass, Bell } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
+import { Bell, ArrowRight } from "lucide-react";
 import servicesBackground from "@/assets/services-bg.jpg";
 import ServiceSubscribeDialog from "./ServiceSubscribeDialog";
-
-const services = [
-  {
-    icon: Users,
-    title: "Human Resource Management",
-    description: "Comprehensive HR solutions including recruitment, training, performance management, and employee relations.",
-    details: [
-      "Recruitment and Staffing",
-      "Training and Development",
-      "Employee Relations Management",
-      "Compensation and Benefits",
-      "Legal Compliance and Risk Management",
-      "Performance Management Systems"
-    ]
-  },
-  {
-    icon: DollarSign,
-    title: "Financial Management & Accounting",
-    description: "Expert financial consulting to optimize your business's financial health and reporting.",
-    details: [
-      "Financial Accounting",
-      "Managerial Accounting",
-      "Tax Accounting",
-      "Financial Planning",
-      "Financial Analysis and Control",
-      "Investment Decisions"
-    ]
-  },
-  {
-    icon: Target,
-    title: "Strategic Management",
-    description: "Develop and implement strategic plans to achieve your organizational goals.",
-    details: [
-      "Strategic Analysis and Reporting",
-      "Vision and Mission Development",
-      "Long-term Strategic Planning",
-      "Organizational Structure Design",
-      "SWOT Analysis",
-      "Implementation and Evaluation"
-    ]
-  },
-  {
-    icon: TrendingUp,
-    title: "Brand Management & Marketing",
-    description: "Build strong brands and effective marketing strategies for market leadership.",
-    details: [
-      "Brand Strategy Development",
-      "Market Research",
-      "Marketing Campaign Management",
-      "Advertising and Promotion",
-      "Public Relations",
-      "Product Design and Positioning"
-    ]
-  },
-  {
-    icon: Heart,
-    title: "Mental Health & Wellness Solutions",
-    description: "Comprehensive mental wellness programs for individuals and organizations to enhance productivity and well-being.",
-    details: [
-      "Guidance and Counseling",
-      "Individual Therapy Sessions",
-      "Corporate Wellness Programs",
-      "Stress Management",
-      "Work-Life Balance Consultation",
-      "Emotional Intelligence Development"
-    ]
-  },
-  {
-    icon: Compass,
-    title: "Mentorship & Coaching",
-    description: "Personalized mentorship and coaching programs designed for individuals and institutions to unlock potential.",
-    details: [
-      "One-on-One Mentorship",
-      "Leadership Coaching",
-      "Career Development Guidance",
-      "Institutional Training Programs",
-      "Executive Coaching",
-      "Personal Growth Workshops"
-    ]
-  }
-];
+import { services } from "@/data/services";
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   return (
     <section id="services" className="relative py-24 overflow-hidden">
-      {/* Background Image with Enhanced Visibility */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ backgroundImage: `url(${servicesBackground})` }}
-      />
-      
-      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: `url(${servicesBackground})` }} />
       <div className="absolute inset-0 bg-gradient-to-tr from-accent/90 via-primary/85 to-primary/90" />
-      
-      {/* Animated Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          className="absolute top-1/4 right-0 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, -50, 0],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 left-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, 50, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
+          <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">What We Do</p>
           <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-gold-gradient">Our Services</span></h2>
-          <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
-            animate={{ 
-              width: ["96px", "144px", "96px"],
-            }}
-            transition={{ 
-              duration: 3,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+          <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
           <p className="text-lg text-white/90">
-            Comprehensive consultancy solutions tailored to your business needs, 
-            delivered by experienced professionals across multiple disciplines.
+            Tailored services across mental health, personal growth, family, education, corporate wellbeing and specialized therapy.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              whileHover={{ rotateY: 8, rotateX: -6, y: -10, scale: 1.03 }}
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20">
-                <CardHeader>
-                  <motion.div 
-                    className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 shadow-lg ring-2 ring-secondary/40"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <service.icon className="text-secondary" size={28} />
-                  </motion.div>
-                  <CardTitle className="text-xl text-secondary">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-white/80 mb-4">{service.description}</p>
-                  <ul className="space-y-2 mb-4">
-                    {service.details.map((detail, idx) => (
-                      <motion.li 
-                        key={idx} 
-                        className="flex items-start text-sm text-white/70"
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.05 }}
+          {services.map((service, index) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.slug}
+                initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.5, delay: index * 0.08 }}
+                whileHover={{ rotateY: 8, rotateX: -6, y: -10, scale: 1.03 }}
+                style={{ transformStyle: "preserve-3d" }}
+              >
+                <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20 flex flex-col">
+                  <CardHeader>
+                    <motion.div
+                      className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 shadow-lg ring-2 ring-secondary/40"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <Icon className="text-secondary" size={28} />
+                    </motion.div>
+                    <CardTitle className="text-xl text-secondary">{service.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex flex-col flex-1">
+                    <p className="text-white/85 mb-5 flex-1">{service.shortDescription}</p>
+                    <div className="flex flex-col gap-2">
+                      <Link to={`/services/${service.slug}`}>
+                        <Button variant="hero" size="sm" className="w-full">
+                          Read More <ArrowRight className="ml-2 h-4 w-4" />
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full bg-white/10 text-white border-white/30 hover:bg-white/20"
+                        onClick={() => setSelectedService(service.title)}
                       >
-                        <span className="text-secondary mr-2 font-bold">•</span>
-                        {detail}
-                      </motion.li>
-                    ))}
-                  </ul>
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    className="w-full mt-2"
-                    onClick={() => setSelectedService(service.title)}
-                  >
-                    <Bell className="mr-2 h-4 w-4" />
-                    Subscribe to Updates
-                  </Button>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                        <Bell className="mr-2 h-4 w-4" /> Subscribe to Updates
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
 
