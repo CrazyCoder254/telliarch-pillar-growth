@@ -1,15 +1,18 @@
 import Navbar from "@/components/Navbar";
-import InfoStrip from "@/components/InfoStrip";
 import Hero from "@/components/Hero";
-import QuickServices from "@/components/QuickServices";
+import InfoStrip from "@/components/InfoStrip";
+import WhoWeAre from "@/components/WhoWeAre";
 import About from "@/components/About";
 import Services from "@/components/Services";
+import WhoWeServe from "@/components/WhoWeServe";
+import OurApproach from "@/components/OurApproach";
+import Values from "@/components/Values";
 import Tips from "@/components/Tips";
 import Programs from "@/components/Programs";
-import Values from "@/components/Values";
 import Blog from "@/components/Blog";
 import Partners from "@/components/Partners";
 import Newsletter from "@/components/Newsletter";
+import FinalCTA from "@/components/FinalCTA";
 import CallBack from "@/components/CallBack";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -21,15 +24,18 @@ const Index = () => {
       <Navbar />
       <Hero />
       <InfoStrip />
-      <QuickServices />
+      <WhoWeAre />
       <About />
       <Services />
+      <WhoWeServe />
+      <OurApproach />
+      <Values />
       <Tips />
       <Programs />
-      <Values />
       <Blog />
       <Partners />
       <Newsletter />
+      <FinalCTA />
       <CallBack />
       <Contact />
       <Footer />

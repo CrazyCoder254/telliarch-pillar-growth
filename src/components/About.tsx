@@ -43,7 +43,8 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">About </span><span className="text-gold-gradient">TELLIARCH LIMITED</span></h2>
+          <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">About Us</p>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">Mental health is the </span><span className="text-gold-gradient">foundation of all growth</span></h2>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
             animate={{ 
@@ -56,10 +57,7 @@ const About = () => {
             }}
           />
           <p className="text-lg text-white/90 leading-relaxed">
-            TELLIARCH LIMITED is a premier business consultancy firm dedicated to providing 
-            comprehensive support to businesses in achieving their strategic objectives. 
-            Inspired by architectural principles where an arch provides structural support, 
-            we serve as the pillar of strength for your business growth and success.
+            Many individuals and organizations struggle not because of a lack of potential—but because emotional, psychological and relational challenges go unaddressed. We exist to bridge that gap by integrating mental wellness with personal and organizational development.
           </p>
         </motion.div>
 
@@ -68,17 +66,17 @@ const About = () => {
             {
               icon: Target,
               title: "Mission",
-              description: "To partner with organizations to optimize their human resource, financial strategies and marketing efforts through tailored consultancy services fostering growth and enabling businesses to unleash their full potential."
+              description: "To empower individuals, families and institutions to achieve sustainable growth through mental health support, personal development and transformative programs."
             },
             {
               icon: Eye,
               title: "Vision",
-              description: "To be the trusted partner for businesses of all sizes worldwide, delivering expert consultancy solutions that drive sustainable growth, operational excellence and competitive advantage for our clients."
+              description: "To create healthier individuals, stronger families and thriving organizations grounded in emotional wellbeing and conscious growth."
             },
             {
               icon: Award,
               title: "Our Story",
-              description: "Born from diverse inspirations and professional expertise in HR, finance, psychology, and strategic management, we've helped numerous startups achieve desired brand positioning and recognition."
+              description: "Our work is rooted in a simple truth: mental health is the foundation of all growth. We integrate therapy, coaching and training to help people not just cope—but truly grow."
             }
           ].map((item, index) => (
             <motion.div

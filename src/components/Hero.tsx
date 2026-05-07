@@ -181,9 +181,11 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight drop-shadow-2xl"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl"
           >
-            Empowering Businesses to Achieve Excellence
+            <span className="text-white">Integrated </span>
+            <span className="text-gold-gradient">Mental Health & Growth Solutions</span>
+            <span className="text-white"> for Individuals, Families & Organizations</span>
           </motion.h1>
           
           <motion.p 
@@ -192,8 +194,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 1.8 }}
             className="text-xl md:text-2xl text-white/90 leading-relaxed"
           >
-            Strategic consultancy solutions in Human Resource, Finance, Marketing, 
-            and Business Development to drive sustainable growth and competitive advantage.
+            We empower people and institutions to thrive through mental wellness, personal development, and sustainable growth strategies.
           </motion.p>
 
           <motion.div 
@@ -203,21 +204,21 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Button
-              onClick={() => scrollToSection("services")}
+              onClick={() => scrollToSection("contact")}
               variant="hero"
               size="lg"
               className="text-lg px-8 py-6 shadow-2xl hover:shadow-secondary/50"
             >
-              Explore Our Services
+              Book a Session
               <ArrowRight className="ml-2" />
             </Button>
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection("services")}
               variant="outline"
               size="lg"
               className="text-lg px-8 py-6 bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm"
             >
-              Get In Touch
+              Explore Our Services
             </Button>
           </motion.div>
 
