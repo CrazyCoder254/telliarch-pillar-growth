@@ -49,12 +49,9 @@ const Services = () => {
                 className="relative h-[420px] perspective-1000"
               >
                 <motion.div
-                  className="relative w-full h-full preserve-3d cursor-pointer"
+                  className="relative w-full h-full preserve-3d"
                   animate={{ rotateY: isFlipped ? 180 : 0 }}
                   transition={{ duration: 0.7, ease: "easeInOut" }}
-                  onHoverStart={() => setFlipped((p) => ({ ...p, [service.slug]: true }))}
-                  onHoverEnd={() => setFlipped((p) => ({ ...p, [service.slug]: false }))}
-                  onClick={() => toggle(service.slug)}
                 >
                   {/* Front */}
                   <div className="absolute inset-0 backface-hidden rounded-xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 p-8 flex flex-col items-center text-center">
@@ -63,9 +60,15 @@ const Services = () => {
                     </div>
                     <h3 className="text-2xl font-bold text-secondary mb-4">{service.title}</h3>
                     <p className="text-white/85 flex-1">{service.shortDescription}</p>
-                    <p className="mt-4 text-xs uppercase tracking-widest text-white/60 flex items-center gap-2">
-                      <RotateCw size={14} /> Hover or tap to flip
-                    </p>
+                    <Button
+                      type="button"
+                      variant="hero"
+                      size="sm"
+                      className="mt-4"
+                      onClick={() => toggle(service.slug)}
+                    >
+                      <RotateCw className="mr-2 h-4 w-4" /> Learn More
+                    </Button>
                   </div>
 
                   {/* Back */}
@@ -75,7 +78,7 @@ const Services = () => {
                     <p className="text-white/80 text-sm flex-1 overflow-hidden line-clamp-6">
                       {service.overview[0]}
                     </p>
-                    <div className="flex flex-col gap-2 mt-4" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex flex-col gap-2 mt-4">
                       <Link to={`/services/${service.slug}`}>
                         <Button variant="hero" size="sm" className="w-full">
                           Read More <ArrowRight className="ml-2 h-4 w-4" />
@@ -87,8 +90,15 @@ const Services = () => {
                         className="w-full bg-white/10 text-white border-white/30 hover:bg-white/20"
                         onClick={() => setSelectedService(service.title)}
                       >
-                        <Bell className="mr-2 h-4 w-4" /> Subscribe to Updates
+                        <Bell className="mr-2 h-4 w-4" /> Subscribe
                       </Button>
+                      <button
+                        type="button"
+                        onClick={() => toggle(service.slug)}
+                        className="text-xs text-white/70 hover:text-secondary underline mt-1"
+                      >
+                        ← Flip back
+                      </button>
                     </div>
                   </div>
                 </motion.div>
