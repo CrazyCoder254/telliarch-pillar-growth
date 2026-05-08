@@ -130,7 +130,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 animate-in slide-in-from-top bg-background/95 backdrop-blur-lg rounded-lg p-4 shadow-elegant">
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-primary rounded-lg p-4 shadow-elegant border border-white/10">
             <button
               onClick={() => scrollToSection("about")}
               className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
