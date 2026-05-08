@@ -62,48 +62,46 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-lg shadow-elegant"
-          : "bg-background/80 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-primary ${
+        isScrolled ? "shadow-elegant" : ""
       }`}
     >
       <TopBar />
-      <div className="container mx-auto px-4 py-3">
+      <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center flex-1 max-w-xs">
-            <img src={logo} alt="Telliarch Limited Logo" className="h-20 md:h-24 lg:h-28 w-full object-contain" />
+          <Link to="/" className="flex items-center">
+            <img src={logo} alt="Telliarch Limited Logo" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-5 text-sm">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
+              className="text-white/90 hover:text-secondary transition-smooth font-medium"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
+              className="text-white/90 hover:text-secondary transition-smooth font-medium"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("values")}
-              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
+              className="text-white/90 hover:text-secondary transition-smooth font-medium"
             >
               Values
             </button>
-            <Link to="/careers" className="text-foreground/80 hover:text-secondary transition-smooth font-medium">
+            <Link to="/careers" className="text-white/90 hover:text-secondary transition-smooth font-medium">
               Careers
             </Link>
-            <Link to="/gallery" className="text-foreground/80 hover:text-secondary transition-smooth font-medium">
+            <Link to="/gallery" className="text-white/90 hover:text-secondary transition-smooth font-medium">
               Gallery
             </Link>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-foreground/80 hover:text-secondary transition-smooth font-medium"
+              className="text-white/90 hover:text-secondary transition-smooth font-medium"
             >
               Contact
             </button>
@@ -123,10 +121,10 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
 
