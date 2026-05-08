@@ -6,8 +6,6 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import WhoWeServe from "@/components/WhoWeServe";
 import OurApproach from "@/components/OurApproach";
-import Values from "@/components/Values";
-import Tips from "@/components/Tips";
 import Programs from "@/components/Programs";
 import Blog from "@/components/Blog";
 import Partners from "@/components/Partners";
@@ -29,8 +27,6 @@ const Index = () => {
       <Services />
       <WhoWeServe />
       <OurApproach />
-      <Values />
-      <Tips />
       <Programs />
       <Blog />
       <Partners />

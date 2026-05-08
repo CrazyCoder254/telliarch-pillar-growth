@@ -2,6 +2,7 @@ import { Card, CardContent } from "./ui/card";
 import { Target, Eye, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutBackground from "@/assets/about-bg.jpg";
+import Values from "./Values";
 
 const About = () => {
   return (
@@ -146,6 +147,7 @@ const About = () => {
           </Card>
         </motion.div>
       </div>
+      <Values />
     </section>
   );
 };
