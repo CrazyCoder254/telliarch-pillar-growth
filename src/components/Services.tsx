@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { Bell, ArrowRight } from "lucide-react";
+import { Bell, ArrowRight, RotateCw } from "lucide-react";
 import servicesBackground from "@/assets/services-bg.jpg";
 import ServiceSubscribeDialog from "./ServiceSubscribeDialog";
 import { services } from "@/data/services";
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [flipped, setFlipped] = useState<Record<string, boolean>>({});
+
+  const toggle = (slug: string) =>
+    setFlipped((p) => ({ ...p, [slug]: !p[slug] }));
 
   return (
     <section id="services" className="relative py-24 overflow-hidden">
@@ -28,37 +31,51 @@ const Services = () => {
           <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-gold-gradient">Our Services</span></h2>
           <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
           <p className="text-lg text-white/90">
-            Tailored services across mental health, personal growth, family, education, corporate wellbeing and specialized therapy.
+            Hover or tap a card to reveal more, then read the full service details.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {services.map((service, index) => {
             const Icon = service.icon;
+            const isFlipped = !!flipped[service.slug];
             return (
               <motion.div
                 key={service.slug}
-                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.5, delay: index * 0.08 }}
-                whileHover={{ rotateY: 8, rotateX: -6, y: -10, scale: 1.03 }}
-                style={{ transformStyle: "preserve-3d" }}
+                className="relative h-[420px] perspective-1000"
               >
-                <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20 flex flex-col">
-                  <CardHeader>
-                    <motion.div
-                      className="w-16 h-16 gradient-primary rounded-xl flex items-center justify-center mb-4 shadow-lg ring-2 ring-secondary/40"
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <Icon className="text-secondary" size={28} />
-                    </motion.div>
-                    <CardTitle className="text-xl text-secondary">{service.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex flex-col flex-1">
-                    <p className="text-white/85 mb-5 flex-1">{service.shortDescription}</p>
-                    <div className="flex flex-col gap-2">
+                <motion.div
+                  className="relative w-full h-full preserve-3d cursor-pointer"
+                  animate={{ rotateY: isFlipped ? 180 : 0 }}
+                  transition={{ duration: 0.7, ease: "easeInOut" }}
+                  onHoverStart={() => setFlipped((p) => ({ ...p, [service.slug]: true }))}
+                  onHoverEnd={() => setFlipped((p) => ({ ...p, [service.slug]: false }))}
+                  onClick={() => toggle(service.slug)}
+                >
+                  {/* Front */}
+                  <div className="absolute inset-0 backface-hidden rounded-xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 p-8 flex flex-col items-center text-center">
+                    <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg ring-2 ring-secondary/40">
+                      <Icon className="text-secondary" size={36} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-secondary mb-4">{service.title}</h3>
+                    <p className="text-white/85 flex-1">{service.shortDescription}</p>
+                    <p className="mt-4 text-xs uppercase tracking-widest text-white/60 flex items-center gap-2">
+                      <RotateCw size={14} /> Hover or tap to flip
+                    </p>
+                  </div>
+
+                  {/* Back */}
+                  <div className="absolute inset-0 backface-hidden rotate-y-180 rounded-xl shadow-2xl bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40 p-8 flex flex-col text-center">
+                    <h3 className="text-xl font-bold text-secondary mb-3">{service.title}</h3>
+                    <p className="text-white/90 text-sm italic mb-4">{service.tagline}</p>
+                    <p className="text-white/80 text-sm flex-1 overflow-hidden line-clamp-6">
+                      {service.overview[0]}
+                    </p>
+                    <div className="flex flex-col gap-2 mt-4" onClick={(e) => e.stopPropagation()}>
                       <Link to={`/services/${service.slug}`}>
                         <Button variant="hero" size="sm" className="w-full">
                           Read More <ArrowRight className="ml-2 h-4 w-4" />
@@ -73,8 +90,8 @@ const Services = () => {
                         <Bell className="mr-2 h-4 w-4" /> Subscribe to Updates
                       </Button>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </motion.div>
               </motion.div>
             );
           })}
