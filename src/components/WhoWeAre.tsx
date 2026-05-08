@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Brain, Sparkles, TrendingUp } from "lucide-react";
+import aboutBackground from "@/assets/about-bg.jpg";
 
 const pillars = [
   { icon: Brain, title: "Mental Health & Emotional Wellness", desc: "Evidence-based therapy and counselling that restores stability and clarity." },
@@ -8,8 +9,11 @@ const pillars = [
 ];
 
 const WhoWeAre = () => (
-  <section id="who-we-are" className="py-24 bg-background">
-    <div className="container mx-auto px-4">
+  <section id="who-we-are" className="relative py-24 overflow-hidden">
+    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: `url(${aboutBackground})` }} />
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/90" />
+
+    <div className="container mx-auto px-4 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -18,16 +22,17 @@ const WhoWeAre = () => (
         className="max-w-3xl mx-auto text-center mb-14"
       >
         <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">Who We Are</p>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          <span className="text-foreground">A growth-centered </span>
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
+          <span className="text-white">A growth-centered </span>
           <span className="text-gold-gradient">mental health & development practice</span>
         </h2>
-        <p className="text-lg text-muted-foreground leading-relaxed">
+        <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
+        <p className="text-lg text-white/90 leading-relaxed">
           We help individuals, families and organizations build resilient, healthy and purpose-driven lives. True growth begins from within—and extends into families, workplaces and communities.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-6 perspective-1000">
+      <div className="grid md:grid-cols-3 gap-8 perspective-1000">
         {pillars.map((p, i) => (
           <motion.div
             key={p.title}
@@ -37,13 +42,14 @@ const WhoWeAre = () => (
             transition={{ duration: 0.5, delay: i * 0.1 }}
             whileHover={{ rotateY: 8, rotateX: -6, y: -8, scale: 1.03 }}
             style={{ transformStyle: "preserve-3d" }}
-            className="bg-card border border-secondary/30 rounded-2xl p-8 shadow-elegant hover:shadow-glow transition-smooth"
           >
-            <div className="w-14 h-14 rounded-xl gradient-accent flex items-center justify-center mb-5 ring-2 ring-secondary/40">
-              <p.icon className="text-secondary" size={26} />
+            <div className="h-full shadow-2xl hover:shadow-secondary/40 transition-all duration-500 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8">
+              <div className="w-16 h-16 rounded-2xl gradient-accent flex items-center justify-center mb-5 ring-2 ring-secondary/50 shadow-lg">
+                <p.icon className="text-secondary" size={28} />
+              </div>
+              <h3 className="text-xl font-bold mb-3 text-secondary">{p.title}</h3>
+              <p className="text-white/85 leading-relaxed">{p.desc}</p>
             </div>
-            <h3 className="text-xl font-bold mb-3 text-gold-gradient">{p.title}</h3>
-            <p className="text-card-foreground/80 leading-relaxed">{p.desc}</p>
           </motion.div>
         ))}
       </div>
