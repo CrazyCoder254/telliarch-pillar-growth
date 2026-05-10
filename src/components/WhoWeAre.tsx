@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Brain, Sparkles, TrendingUp } from "lucide-react";
 import aboutBackground from "@/assets/about-bg.jpg";
+import FlipCard from "./FlipCard";
 
 const pillars = [
   { icon: Brain, title: "Mental Health & Emotional Wellness", desc: "Evidence-based therapy and counselling that restores stability and clarity." },
