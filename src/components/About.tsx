@@ -3,6 +3,7 @@ import { Target, Eye, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutBackground from "@/assets/about-bg.jpg";
 import Values from "./Values";
+import FlipCard from "./FlipCard";
 
 const About = () => {
   return (
