@@ -33,7 +33,7 @@ const WhoWeAre = () => (
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-3 gap-8 perspective-1000">
+      <div className="grid md:grid-cols-3 gap-8">
         {pillars.map((p, i) => (
           <motion.div
             key={p.title}
@@ -41,16 +41,25 @@ const WhoWeAre = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            whileHover={{ rotateY: 8, rotateX: -6, y: -8, scale: 1.03 }}
-            style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="h-full shadow-2xl hover:shadow-secondary/40 transition-all duration-500 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8">
-              <div className="w-16 h-16 rounded-2xl gradient-accent flex items-center justify-center mb-5 ring-2 ring-secondary/50 shadow-lg">
-                <p.icon className="text-secondary" size={28} />
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-secondary">{p.title}</h3>
-              <p className="text-white/85 leading-relaxed">{p.desc}</p>
-            </div>
+            <FlipCard
+              height="h-[280px]"
+              front={
+                <div className="w-full h-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl flex flex-col items-center justify-center text-center">
+                  <div className="w-16 h-16 rounded-2xl gradient-accent flex items-center justify-center mb-5 ring-2 ring-secondary/50 shadow-lg">
+                    <p.icon className="text-secondary" size={28} />
+                  </div>
+                  <h3 className="text-xl font-bold text-secondary">{p.title}</h3>
+                  <p className="text-white/60 text-xs italic mt-3">Hover to learn more</p>
+                </div>
+              }
+              back={
+                <div className="w-full h-full bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40 rounded-2xl p-8 shadow-2xl flex flex-col items-center justify-center text-center">
+                  <h3 className="text-lg font-bold text-secondary mb-3">{p.title}</h3>
+                  <p className="text-white/90 leading-relaxed">{p.desc}</p>
+                </div>
+              }
+            />
           </motion.div>
         ))}
       </div>
