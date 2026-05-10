@@ -63,7 +63,7 @@ const About = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 perspective-1000">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {[
             {
               icon: Target,
@@ -83,32 +83,33 @@ const About = () => {
           ].map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50, rotateX: -15 }}
-              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ 
-                duration: 0.6,
-                delay: index * 0.2,
-                ease: "easeOut"
-              }}
-              whileHover={{ rotateY: 10, rotateX: -8, y: -10, scale: 1.03 }}
-              style={{ transformStyle: "preserve-3d" }}
+              transition={{ duration: 0.6, delay: index * 0.2, ease: "easeOut" }}
             >
-              <Card className="shadow-2xl hover:shadow-secondary/40 transition-all duration-500 border-none bg-white/10 backdrop-blur-md group h-full border border-white/20">
-                <CardContent className="p-8 text-center">
-                  <motion.div 
-                    className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg ring-2 ring-secondary/50"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <item.icon className="text-secondary" size={36} />
-                  </motion.div>
-                  <h3 className="mb-4 text-2xl text-secondary font-bold">{item.title}</h3>
-                  <p className="text-white/80 leading-relaxed">
-                    {item.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <FlipCard
+                height="h-[300px]"
+                front={
+                  <Card className="shadow-2xl h-full border-none bg-white/10 backdrop-blur-md border border-white/20">
+                    <CardContent className="p-8 text-center h-full flex flex-col items-center justify-center">
+                      <div className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg ring-2 ring-secondary/50">
+                        <item.icon className="text-secondary" size={36} />
+                      </div>
+                      <h3 className="text-2xl text-secondary font-bold">{item.title}</h3>
+                      <p className="text-white/60 text-xs italic mt-3">Hover to learn more</p>
+                    </CardContent>
+                  </Card>
+                }
+                back={
+                  <Card className="shadow-2xl h-full border-none bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40">
+                    <CardContent className="p-8 text-center h-full flex flex-col items-center justify-center">
+                      <h3 className="mb-4 text-xl text-secondary font-bold">{item.title}</h3>
+                      <p className="text-white/90 leading-relaxed">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                }
+              />
             </motion.div>
           ))}
         </div>
