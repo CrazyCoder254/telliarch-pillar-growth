@@ -1,4 +1,4 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface FlipCardProps {
@@ -10,12 +10,29 @@ interface FlipCardProps {
   tappable?: boolean;
   /** Forced flip state (overrides hover/tap). */
   forceFlipped?: boolean;
+  /** When false, keeps the 3D flip even if user prefers reduced motion. Defaults to true. */
+  respectReducedMotion?: boolean;
 }
+
+const usePrefersReducedMotion = () => {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setPrefersReducedMotion(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return prefersReducedMotion;
+};
 
 /**
  * Reusable 3D flip card.
  * - Front face: shown by default (typically icon + title).
  * - Back face: revealed on hover (desktop) or tap (mobile) — shows description and any actions.
+ * - Respects prefers-reduced-motion by default: shows back content statically without animation.
  */
 const FlipCard = ({
   front,
@@ -24,8 +41,20 @@ const FlipCard = ({
   height = "h-[340px]",
   tappable = true,
   forceFlipped,
+  respectReducedMotion = true,
 }: FlipCardProps) => {
   const [tapFlipped, setTapFlipped] = useState(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const isReduced = prefersReducedMotion && respectReducedMotion;
+
+  if (isReduced) {
+    return (
+      <div className={cn("w-full", height, className)}>
+        {back}
+      </div>
+    );
+  }
+
   const isFlipped = forceFlipped ?? tapFlipped;
 
   return (
