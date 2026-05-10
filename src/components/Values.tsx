@@ -2,6 +2,7 @@ import { Card, CardContent } from "./ui/card";
 import { Shield, Lightbulb, Star, Users, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import valuesBackground from "@/assets/values-bg.jpg";
+import FlipCard from "./FlipCard";
 
 const values = [
   {
