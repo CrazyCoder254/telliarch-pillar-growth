@@ -45,6 +45,7 @@ const Services = () => {
               >
                 <FlipCard
                   height="h-[380px]"
+                  respectReducedMotion={false}
                   front={
                     <div className="w-full h-full rounded-xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 p-8 flex flex-col items-center justify-center text-center">
                       <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg ring-2 ring-secondary/40">
