@@ -94,40 +94,6 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white space-y-8">
-          <AnimatePresence>
-            {showWelcome && (
-              <motion.div
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="text-2xl md:text-4xl font-bold mb-4"
-              >
-                {welcomeText.split("").map((char, index) => {
-                  const colors = [
-                    "text-red-400",
-                    "text-yellow-400",
-                    "text-green-400",
-                    "text-blue-400",
-                    "text-purple-400",
-                    "text-pink-400",
-                    "text-orange-400"
-                  ];
-                  const colorClass = colors[index % colors.length];
-                  
-                  return (
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.1, delay: index * 0.05 }}
-                      className={colorClass}
-                    >
-                      {char}
-                    </motion.span>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
 
           <motion.h1 
             initial={{ opacity: 0, scale: 0.9 }}
