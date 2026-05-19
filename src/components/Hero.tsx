@@ -14,60 +14,13 @@ const Hero = () => {
   const { count: businessesCount, ref: businessesRef } = useCountUp(100, 2000);
   const { count: servicesCount, ref: servicesRef } = useCountUp(5, 1500);
   const { count: satisfactionCount, ref: satisfactionRef } = useCountUp(98, 2500);
-  const [showWelcome, setShowWelcome] = useState(true);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
-  const welcomeText = "Welcome to Telliarch Limited";
-
   useEffect(() => {
-    // Rotate background images every 5 seconds
     const bgInterval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % heroBackgrounds.length);
     }, 5000);
-
     return () => clearInterval(bgInterval);
-  }, []);
-
-  useEffect(() => {
-    // Trigger confetti celebration
-    const duration = 3000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
-
-    const randomInRange = (min: number, max: number) => {
-      return Math.random() * (max - min) + min;
-    };
-
-    const interval = setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
-      const particleCount = 50 * (timeLeft / duration);
-
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-      });
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-      });
-    }, 250);
-
-    // Fade away after letter animation completes
-    const timer = setTimeout(() => {
-      setShowWelcome(false);
-    }, welcomeText.length * 50 + 2000);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-    };
   }, []);
 
   const scrollToSection = (id: string) => {
