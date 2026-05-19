@@ -5,9 +5,8 @@ import heroBackground2 from "@/assets/hero-bg-2.jpg";
 import heroBackground3 from "@/assets/hero-bg-3.jpg";
 import heroBackground4 from "@/assets/hero-bg-4.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import confetti from "canvas-confetti";
 
 const heroBackgrounds = [heroBackground1, heroBackground2, heroBackground3, heroBackground4];
 
