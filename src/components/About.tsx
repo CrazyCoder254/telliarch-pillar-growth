@@ -140,7 +140,7 @@ const About = () => {
                 >
                   <p className="font-semibold text-secondary mb-2 text-lg">Our Expertise</p>
                   <p className="text-white/80">
-                    Strategic Management, Human Resources, Finance & Accounting, 
+                    Strategic Management, Human Resources,
                     Marketing, Psychology & Counselling
                   </p>
                 </motion.div>

@@ -6,9 +6,9 @@ const TopBar = () => {
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         <div className="flex items-center gap-6">
           <span className="opacity-80">Have any questions? Feel free to contact us:</span>
-          <a href="tel:+254720599457" className="flex items-center gap-1.5 hover:text-secondary transition-smooth">
+          <a href="tel:+254142380678" className="flex items-center gap-1.5 hover:text-secondary transition-smooth">
             <Phone size={12} />
-            +254 720 599457
+            +254 142 380678
           </a>
           <a href="mailto:info@telliarch.co.ke" className="flex items-center gap-1.5 hover:text-secondary transition-smooth">
             <Mail size={12} />

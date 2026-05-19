@@ -5,9 +5,8 @@ import heroBackground2 from "@/assets/hero-bg-2.jpg";
 import heroBackground3 from "@/assets/hero-bg-3.jpg";
 import heroBackground4 from "@/assets/hero-bg-4.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import confetti from "canvas-confetti";
 
 const heroBackgrounds = [heroBackground1, heroBackground2, heroBackground3, heroBackground4];
 
@@ -15,60 +14,13 @@ const Hero = () => {
   const { count: businessesCount, ref: businessesRef } = useCountUp(100, 2000);
   const { count: servicesCount, ref: servicesRef } = useCountUp(5, 1500);
   const { count: satisfactionCount, ref: satisfactionRef } = useCountUp(98, 2500);
-  const [showWelcome, setShowWelcome] = useState(true);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
-  const welcomeText = "Welcome to Telliarch Limited";
-
   useEffect(() => {
-    // Rotate background images every 5 seconds
     const bgInterval = setInterval(() => {
       setCurrentBgIndex((prev) => (prev + 1) % heroBackgrounds.length);
     }, 5000);
-
     return () => clearInterval(bgInterval);
-  }, []);
-
-  useEffect(() => {
-    // Trigger confetti celebration
-    const duration = 3000;
-    const animationEnd = Date.now() + duration;
-    const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
-
-    const randomInRange = (min: number, max: number) => {
-      return Math.random() * (max - min) + min;
-    };
-
-    const interval = setInterval(() => {
-      const timeLeft = animationEnd - Date.now();
-
-      if (timeLeft <= 0) {
-        return clearInterval(interval);
-      }
-
-      const particleCount = 50 * (timeLeft / duration);
-
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
-      });
-      confetti({
-        ...defaults,
-        particleCount,
-        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
-      });
-    }, 250);
-
-    // Fade away after letter animation completes
-    const timer = setTimeout(() => {
-      setShowWelcome(false);
-    }, welcomeText.length * 50 + 2000);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-    };
   }, []);
 
   const scrollToSection = (id: string) => {
@@ -142,40 +94,6 @@ const Hero = () => {
 
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white space-y-8">
-          <AnimatePresence>
-            {showWelcome && (
-              <motion.div
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="text-2xl md:text-4xl font-bold mb-4"
-              >
-                {welcomeText.split("").map((char, index) => {
-                  const colors = [
-                    "text-red-400",
-                    "text-yellow-400",
-                    "text-green-400",
-                    "text-blue-400",
-                    "text-purple-400",
-                    "text-pink-400",
-                    "text-orange-400"
-                  ];
-                  const colorClass = colors[index % colors.length];
-                  
-                  return (
-                    <motion.span
-                      key={index}
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.1, delay: index * 0.05 }}
-                      className={colorClass}
-                    >
-                      {char}
-                    </motion.span>
-                  );
-                })}
-              </motion.div>
-            )}
-          </AnimatePresence>
 
           <motion.h1 
             initial={{ opacity: 0, scale: 0.9 }}

@@ -35,7 +35,7 @@ const CallBack = () => {
     const message = encodeURIComponent(
       `Hello Telliarch, I'd like a call back.\n\nName: ${parsed.data.name}\nPhone: ${parsed.data.phone}\nEmail: ${parsed.data.email}\nInquiry: ${parsed.data.inquiry}`
     );
-    window.open(`https://wa.me/254720599457?text=${message}`, "_blank");
+    window.open(`https://wa.me/254142380678?text=${message}`, "_blank");
 
     toast({
       title: "Request sent",
