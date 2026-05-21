@@ -173,10 +173,62 @@ All colors MUST be HSL.
   }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(45 100% 45%) 50%, hsl(38 95% 50%) 100%);
+    background: linear-gradient(135deg, hsl(43 81% 52%) 0%, hsl(43 81% 42%) 50%, hsl(38 78% 38%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+
+  /* Premium glass card — floats above beige/cream backgrounds */
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      hsl(36 45% 96% / 0.72) 0%,
+      hsl(34 38% 88% / 0.55) 100%
+    );
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid hsl(34 38% 70% / 0.45);
+    box-shadow: var(--shadow-glass);
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px -12px hsl(132 33% 18% / 0.28), inset 0 1px 0 0 hsl(36 39% 95% / 0.5);
+    border-color: hsl(43 81% 46% / 0.5);
+  }
+
+  /* Glass card on dark green sections */
+  .glass-card-dark {
+    background: linear-gradient(
+      135deg,
+      hsl(132 30% 22% / 0.55) 0%,
+      hsl(132 25% 16% / 0.45) 100%
+    );
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid hsl(34 38% 75% / 0.25);
+    box-shadow: 0 12px 40px -12px hsl(0 0% 0% / 0.35);
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card-dark:hover {
+    transform: translateY(-6px);
+    border-color: hsl(43 81% 50% / 0.55);
+  }
+
+  .section-beige {
+    background: var(--gradient-section);
+  }
+
+  .section-green {
+    background: var(--gradient-primary);
+    color: hsl(36 45% 96%);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
   }
 }
