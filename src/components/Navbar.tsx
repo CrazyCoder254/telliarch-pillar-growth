@@ -77,31 +77,31 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-5 text-sm">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-white/90 hover:text-secondary transition-smooth font-medium"
+              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="text-white/90 hover:text-secondary transition-smooth font-medium"
+              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("values")}
-              className="text-white/90 hover:text-secondary transition-smooth font-medium"
+              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
             >
               Values
             </button>
-            <Link to="/careers" className="text-white/90 hover:text-secondary transition-smooth font-medium">
+            <Link to="/careers" className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium">
               Careers
             </Link>
-            <Link to="/gallery" className="text-white/90 hover:text-secondary transition-smooth font-medium">
+            <Link to="/gallery" className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium">
               Gallery
             </Link>
             <button
               onClick={() => scrollToSection("contact")}
-              className="text-white/90 hover:text-secondary transition-smooth font-medium"
+              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
             >
               Contact
             </button>
@@ -121,7 +121,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-[#234126]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -130,39 +130,39 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-primary rounded-lg p-4 shadow-elegant border border-white/10">
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#D8C3A5] rounded-lg p-4 shadow-elegant border border-[#234126]/20">
             <button
               onClick={() => scrollToSection("about")}
-              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
+              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
             >
               About
             </button>
             <button
               onClick={() => scrollToSection("services")}
-              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
+              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
             >
               Services
             </button>
             <button
               onClick={() => scrollToSection("values")}
-              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
+              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
             >
               Values
             </button>
-            <Link to="/careers" className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium">
+            <Link to="/careers" className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium">
               Careers
             </Link>
-            <Link to="/gallery" className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium">
+            <Link to="/gallery" className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium">
               Gallery
             </Link>
             <button
               onClick={() => scrollToSection("contact")}
-              className="block w-full text-left text-secondary hover:text-secondary/80 transition-smooth py-2 font-medium"
+              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
             >
               Contact
             </button>
             <div className="flex items-center gap-2 py-2">
-              <span className="text-secondary font-medium">Theme:</span>
+              <span className="text-[#234126] font-medium">Theme:</span>
               <ThemeToggle />
             </div>
             {user ? (
