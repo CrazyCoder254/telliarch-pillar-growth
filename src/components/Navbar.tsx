@@ -62,7 +62,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-primary ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#D8C3A5] ${
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
