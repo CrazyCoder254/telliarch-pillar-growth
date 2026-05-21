@@ -8,43 +8,64 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 34 38% 75%;
-    --foreground: 130 30% 15%;
+    /* Brand palette
+       Primary green  #2F5D3A  -> 132 33% 27%
+       Soft beige     #D8C3A5  ->  34 38% 75%
+       Light cream    #EFE6D8  ->  36 39% 89%
+       Muted gold     #D4A017  ->  43 81% 46%
+       Dark text      #263326  -> 120 14% 17%
+    */
+    --background: 36 39% 89%;
+    --foreground: 120 14% 17%;
 
-    --card: 130 28% 32%;
-    --card-foreground: 120 25% 94%;
+    --card: 36 45% 96%;
+    --card-foreground: 120 14% 17%;
 
-    --popover: 120 25% 95%;
-    --popover-foreground: 130 20% 15%;
+    --popover: 36 45% 96%;
+    --popover-foreground: 120 14% 17%;
 
-    --primary: 130 28% 28%;
-    --primary-foreground: 120 25% 94%;
+    --primary: 132 33% 27%;
+    --primary-foreground: 36 45% 96%;
 
-    --secondary: 45 100% 50%;
-    --secondary-foreground: 130 28% 18%;
+    --secondary: 43 81% 46%;
+    --secondary-foreground: 120 14% 17%;
 
-    --muted: 120 18% 84%;
-    --muted-foreground: 130 12% 30%;
+    --muted: 34 38% 82%;
+    --muted-foreground: 120 10% 32%;
 
-    --accent: 130 35% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 34 38% 75%;
+    --accent-foreground: 120 14% 17%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 75% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 120 15% 78%;
-    --input: 120 15% 82%;
-    --ring: 130 35% 45%;
+    --border: 34 25% 70%;
+    --input: 34 25% 80%;
+    --ring: 132 33% 35%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(130 28% 22%) 0%, hsl(130 28% 38%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(130 35% 40%) 0%, hsl(130 40% 55%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(130 30% 18%) 0%, hsl(130 28% 28%) 50%, hsl(130 25% 38%) 100%);
-    --shadow-elegant: 0 10px 40px -10px hsl(130 28% 20% / 0.35);
-    --shadow-glow: 0 0 30px hsl(130 35% 45% / 0.25);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Brand color references for direct use */
+    --brand-green: 132 33% 27%;
+    --brand-green-deep: 132 35% 18%;
+    --brand-beige: 34 38% 75%;
+    --brand-cream: 36 39% 89%;
+    --brand-gold: 43 81% 46%;
+    --brand-ink: 120 14% 17%;
+
+    /* Premium gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(132 35% 22%) 0%, hsl(132 33% 32%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(43 81% 50%) 0%, hsl(38 78% 42%) 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(47, 93, 58, 0.92) 0%, rgba(38, 51, 38, 0.78) 50%, rgba(216, 195, 165, 0.45) 100%);
+    --gradient-beige: linear-gradient(180deg, hsl(36 39% 92%) 0%, hsl(34 38% 82%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(36 39% 91%) 0%, hsl(34 32% 86%) 100%);
+
+    /* Soft premium shadows */
+    --shadow-elegant: 0 12px 40px -12px hsl(120 14% 17% / 0.18);
+    --shadow-glow: 0 0 32px hsl(43 81% 46% / 0.22);
+    --shadow-soft: 0 8px 30px -10px hsl(132 33% 18% / 0.18);
+    --shadow-glass: 0 10px 40px -10px hsl(132 33% 18% / 0.22), inset 0 1px 0 0 hsl(36 39% 95% / 0.4);
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
@@ -152,10 +173,62 @@ All colors MUST be HSL.
   }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(45 100% 45%) 50%, hsl(38 95% 50%) 100%);
+    background: linear-gradient(135deg, hsl(43 81% 52%) 0%, hsl(43 81% 42%) 50%, hsl(38 78% 38%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
+  }
+
+  /* Premium glass card — floats above beige/cream backgrounds */
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      hsl(36 45% 96% / 0.72) 0%,
+      hsl(34 38% 88% / 0.55) 100%
+    );
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid hsl(34 38% 70% / 0.45);
+    box-shadow: var(--shadow-glass);
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px -12px hsl(132 33% 18% / 0.28), inset 0 1px 0 0 hsl(36 39% 95% / 0.5);
+    border-color: hsl(43 81% 46% / 0.5);
+  }
+
+  /* Glass card on dark green sections */
+  .glass-card-dark {
+    background: linear-gradient(
+      135deg,
+      hsl(132 30% 22% / 0.55) 0%,
+      hsl(132 25% 16% / 0.45) 100%
+    );
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid hsl(34 38% 75% / 0.25);
+    box-shadow: 0 12px 40px -12px hsl(0 0% 0% / 0.35);
+    transition: var(--transition-smooth);
+  }
+
+  .glass-card-dark:hover {
+    transform: translateY(-6px);
+    border-color: hsl(43 81% 50% / 0.55);
+  }
+
+  .section-beige {
+    background: var(--gradient-section);
+  }
+
+  .section-green {
+    background: var(--gradient-primary);
+    color: hsl(36 45% 96%);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
   }
 }
