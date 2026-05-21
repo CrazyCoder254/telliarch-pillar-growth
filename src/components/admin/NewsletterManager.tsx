@@ -37,7 +37,6 @@ interface SentNewsletter {
 
 const SERVICES = [
   "Human Resource Management",
-  "Financial Management & Accounting",
   "Strategic Management",
   "Brand Management & Marketing",
   "Mental Health & Wellness Solutions",
