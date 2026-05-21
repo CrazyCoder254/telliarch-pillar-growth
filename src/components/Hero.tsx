@@ -44,8 +44,14 @@ const Hero = () => {
         />
       ))}
       
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/75 to-accent/85" />
+      {/* Overlay: green-to-beige gradient for warmer, premium feel */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(34, 85, 34, 0.88) 0%, rgba(35, 65, 38, 0.75) 50%, rgba(216, 195, 165, 0.45) 100%)",
+        }}
+      />
       
       {/* Animated Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden">
