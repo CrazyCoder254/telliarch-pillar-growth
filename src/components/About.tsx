@@ -150,32 +150,6 @@ const About = () => {
           </Card>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-16 max-w-3xl mx-auto text-center bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-10 shadow-2xl"
-        >
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
-            Ready to partner with <span className="text-gold-gradient">TELLIARCH LIMITED</span>?
-          </h3>
-          <p className="text-white/80 mb-6">
-            Let's start a conversation about how we can support your growth journey.
-          </p>
-          <Button
-            onClick={() => {
-              const el = document.getElementById("contact");
-              el?.scrollIntoView({ behavior: "smooth" });
-            }}
-            variant="hero"
-            size="lg"
-            className="text-lg px-8 py-6 shadow-2xl hover:shadow-secondary/50"
-          >
-            Contact Us
-            <ArrowRight className="ml-2" />
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
