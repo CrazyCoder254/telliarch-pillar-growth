@@ -8,42 +8,51 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 34 38% 75%;
-    --foreground: 130 30% 15%;
+    /* Warm earth palette: Beige, Taupe, Hazel, Pecan, Mahogany, Caramel, Auburn */
+    --background: 36 42% 84%;              /* Beige */
+    --foreground: 15 45% 16%;              /* Deep mahogany text */
 
-    --card: 130 28% 32%;
-    --card-foreground: 120 25% 94%;
+    --card: 18 40% 28%;                    /* Pecan/Mahogany card */
+    --card-foreground: 36 50% 94%;
 
-    --popover: 120 25% 95%;
-    --popover-foreground: 130 20% 15%;
+    --popover: 36 42% 92%;
+    --popover-foreground: 15 45% 16%;
 
-    --primary: 130 28% 28%;
-    --primary-foreground: 120 25% 94%;
+    --primary: 15 55% 26%;                 /* Mahogany */
+    --primary-foreground: 36 50% 94%;
 
-    --secondary: 45 100% 50%;
-    --secondary-foreground: 130 28% 18%;
+    --secondary: 28 70% 48%;               /* Caramel */
+    --secondary-foreground: 15 45% 14%;
 
-    --muted: 120 18% 84%;
-    --muted-foreground: 130 12% 30%;
+    --muted: 32 28% 78%;                   /* Taupe */
+    --muted-foreground: 18 25% 28%;
 
-    --accent: 130 35% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 18 65% 38%;                  /* Auburn */
+    --accent-foreground: 36 50% 96%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 75% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 120 15% 78%;
-    --input: 120 15% 82%;
-    --ring: 130 35% 45%;
+    --border: 30 25% 68%;                  /* Hazel */
+    --input: 32 28% 80%;
+    --ring: 18 65% 38%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(130 28% 22%) 0%, hsl(130 28% 38%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(130 35% 40%) 0%, hsl(130 40% 55%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(130 30% 18%) 0%, hsl(130 28% 28%) 50%, hsl(130 25% 38%) 100%);
-    --shadow-elegant: 0 10px 40px -10px hsl(130 28% 20% / 0.35);
-    --shadow-glow: 0 0 30px hsl(130 35% 45% / 0.25);
+    /* Brand tones */
+    --beige: 36 42% 84%;
+    --taupe: 32 22% 60%;
+    --hazel: 28 35% 48%;
+    --pecan: 22 40% 32%;
+    --mahogany: 15 55% 26%;
+    --caramel: 28 70% 48%;
+    --auburn: 18 65% 38%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(15 55% 22%) 0%, hsl(18 60% 36%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(18 65% 38%) 0%, hsl(28 70% 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(15 55% 22%) 0%, hsl(18 60% 32%) 50%, hsl(28 60% 45%) 100%);
+    --shadow-elegant: 0 10px 40px -10px hsl(15 55% 15% / 0.45);
+    --shadow-glow: 0 0 35px hsl(28 70% 48% / 0.35);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -152,7 +161,7 @@ All colors MUST be HSL.
   }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, hsl(45 100% 55%) 0%, hsl(45 100% 45%) 50%, hsl(38 95% 50%) 100%);
+    background: linear-gradient(135deg, hsl(36 80% 70%) 0%, hsl(28 75% 55%) 50%, hsl(18 70% 45%) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

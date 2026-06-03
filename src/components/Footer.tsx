@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="text-center md:text-left">
-            <p className="font-semibold text-lg mb-2">TELLIARCH LIMITED</p>
+            <p className="font-semibold text-lg mb-2">TELLIARCH</p>
             <p className="text-sm text-primary-foreground/80">
               Empowering Businesses to Achieve Excellence
             </p>
@@ -56,7 +56,7 @@ const Footer = () => {
 
           <div className="text-center md:text-right">
             <p className="text-sm text-primary-foreground/80">
-              © {new Date().getFullYear()} TELLIARCH LIMITED. All rights reserved.
+              © {new Date().getFullYear()} TELLIARCH. All rights reserved.
             </p>
             <p className="text-sm text-primary-foreground/60 mt-1">
               Developed by <span className="font-semibold text-secondary">KenTech Softwares</span> in 2025
