@@ -77,7 +77,7 @@ const Contact = () => {
             {
               icon: Phone,
               title: "Phone",
-              content: ["+254 142 380678", "Available Mon-Fri, 8am-6pm"],
+              content: ["+254 142 380678", "Available 24/7"],
               link: "tel:+254142380678"
             }
           ].map((info, index) => (
