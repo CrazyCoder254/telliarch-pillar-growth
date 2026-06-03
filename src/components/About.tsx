@@ -1,6 +1,5 @@
 import { Card, CardContent } from "./ui/card";
-import { Target, Eye, Award, ArrowRight } from "lucide-react";
-import { Button } from "./ui/button";
+import { Target, Eye, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutBackground from "@/assets/about-bg.jpg";
 
