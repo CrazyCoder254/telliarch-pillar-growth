@@ -10,6 +10,7 @@ import AdminAuth from "./pages/AdminAuth";
 import Careers from "./pages/Careers";
 import Gallery from "./pages/Gallery";
 import Admin from "./pages/Admin";
+import AboutPage from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
@@ -26,6 +27,7 @@ const App = () => (
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin/auth" element={<AdminAuth />} />
             <Route path="/careers" element={<Careers />} />
