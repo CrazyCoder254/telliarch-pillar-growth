@@ -9,8 +9,8 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Warm earth palette: Beige, Taupe, Hazel, Pecan, Mahogany, Caramel, Auburn */
-    --background: 36 42% 84%;              /* Beige */
-    --foreground: 15 45% 16%;              /* Deep mahogany text */
+    --background: 15 55% 22%;              /* Mahogany (matches Call Back hero) */
+    --foreground: 36 50% 94%;              /* Warm beige text */
 
     --card: 18 40% 28%;                    /* Pecan/Mahogany card */
     --card-foreground: 36 50% 94%;
@@ -93,7 +93,9 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
+    background: var(--gradient-hero);
+    background-attachment: fixed;
     font-feature-settings: "liga" 1, "calt" 1;
   }
 
