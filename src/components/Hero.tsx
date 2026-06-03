@@ -44,14 +44,15 @@ const Hero = () => {
         />
       ))}
       
-      {/* Overlay: green-to-beige gradient for warmer, premium feel */}
+      {/* Overlay: mahogany → auburn → beige warm gradient */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, rgba(34, 85, 34, 0.88) 0%, rgba(35, 65, 38, 0.75) 50%, rgba(216, 195, 165, 0.45) 100%)",
+            "linear-gradient(135deg, hsla(15, 55%, 18%, 0.92) 0%, hsla(18, 65%, 32%, 0.78) 45%, hsla(36, 60%, 70%, 0.55) 100%)",
         }}
       />
+
       
       {/* Animated Decorative Elements */}
       <div className="absolute inset-0 overflow-hidden">
