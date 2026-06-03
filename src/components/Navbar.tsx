@@ -15,10 +15,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -27,11 +24,9 @@ const Navbar = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
-
     return () => subscription.unsubscribe();
   }, []);
 
@@ -41,28 +36,22 @@ const Navbar = () => {
   };
 
   const scrollToSection = (id: string) => {
-    // Navigate to home page first if not already there
     if (window.location.pathname !== "/") {
       navigate("/");
-      // Wait for navigation to complete before scrolling
       setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       }, 100);
     } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
   };
 
+  const linkClass = "text-primary hover:text-accent transition-smooth font-medium";
+
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#D8C3A5] ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-background/95 backdrop-blur-md border-b border-border ${
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
@@ -70,58 +59,28 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Telliarch Limited Logo" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={logo} alt="Telliarch Logo" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-5 text-sm">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("services")}
-              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection("values")}
-              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
-            >
-              Values
-            </button>
-            <Link to="/careers" className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium">
-              Careers
-            </Link>
-            <Link to="/gallery" className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium">
-              Gallery
-            </Link>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-[#234126] hover:text-[#25D366] transition-smooth font-medium"
-            >
-              Contact
-            </button>
+            <Link to="/about" className={linkClass}>About</Link>
+            <button onClick={() => scrollToSection("services")} className={linkClass}>Services</button>
+            <button onClick={() => scrollToSection("values")} className={linkClass}>Values</button>
+            <Link to="/careers" className={linkClass}>Careers</Link>
+            <Link to="/gallery" className={linkClass}>Gallery</Link>
+            <button onClick={() => scrollToSection("contact")} className={linkClass}>Contact</button>
             <ThemeToggle />
             {user ? (
-              <Button onClick={handleSignOut} variant="outline" size="sm">
-                Sign Out
-              </Button>
+              <Button onClick={handleSignOut} variant="outline" size="sm">Sign Out</Button>
             ) : (
-              <Link to="/auth">
-                <Button variant="hero" size="sm">
-                  Sign In
-                </Button>
-              </Link>
+              <Link to="/auth"><Button variant="hero" size="sm">Sign In</Button></Link>
             )}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-[#234126]"
+            className="md:hidden text-primary"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -130,50 +89,22 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#D8C3A5] rounded-lg p-4 shadow-elegant border border-[#234126]/20">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
-            >
-              About
-            </button>
-            <button
-              onClick={() => scrollToSection("services")}
-              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
-            >
-              Services
-            </button>
-            <button
-              onClick={() => scrollToSection("values")}
-              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
-            >
-              Values
-            </button>
-            <Link to="/careers" className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium">
-              Careers
-            </Link>
-            <Link to="/gallery" className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium">
-              Gallery
-            </Link>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="block w-full text-left text-[#234126] hover:text-[#25D366] transition-smooth py-2 font-medium"
-            >
-              Contact
-            </button>
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-background rounded-lg p-4 shadow-elegant border border-border">
+            <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>About</Link>
+            <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
+            <button onClick={() => scrollToSection("values")} className={`block w-full text-left py-2 ${linkClass}`}>Values</button>
+            <Link to="/careers" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Careers</Link>
+            <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Gallery</Link>
+            <button onClick={() => scrollToSection("contact")} className={`block w-full text-left py-2 ${linkClass}`}>Contact</button>
             <div className="flex items-center gap-2 py-2">
-              <span className="text-[#234126] font-medium">Theme:</span>
+              <span className="text-primary font-medium">Theme:</span>
               <ThemeToggle />
             </div>
             {user ? (
-              <Button onClick={handleSignOut} variant="outline" size="sm" className="w-full">
-                Sign Out
-              </Button>
+              <Button onClick={handleSignOut} variant="outline" size="sm" className="w-full">Sign Out</Button>
             ) : (
               <Link to="/auth" className="block">
-                <Button variant="hero" size="sm" className="w-full">
-                  Sign In
-                </Button>
+                <Button variant="hero" size="sm" className="w-full">Sign In</Button>
               </Link>
             )}
           </div>
