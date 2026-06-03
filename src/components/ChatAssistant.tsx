@@ -130,7 +130,7 @@ const ChatAssistant = () => {
                   <div className="text-center text-muted-foreground py-8">
                     <MessageCircle className="h-12 w-12 mx-auto mb-4 opacity-50" />
                     <p className="text-sm">
-                      Hi! I'm here to help you learn about TELLIARCH LIMITED's services.
+                      Hi! I'm here to help you learn about TELLIARCH's services.
                       <br />
                       Ask me anything!
                     </p>
@@ -187,7 +187,7 @@ const ChatAssistant = () => {
           type="button"
           onClick={() => {
             const phone = "254142380678";
-            const text = encodeURIComponent("Hello TELLIARCH LIMITED, I would like to inquire about your services.");
+            const text = encodeURIComponent("Hello TELLIARCH, I would like to inquire about your services.");
             const waUrl = `https://wa.me/${phone}?text=${text}`;
             window.open(waUrl, "_blank", "noopener,noreferrer");
           }}
