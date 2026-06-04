@@ -92,9 +92,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground antialiased;
-    background: var(--gradient-hero);
-    background-attachment: fixed;
+    @apply text-foreground antialiased bg-background;
     font-feature-settings: "liga" 1, "calt" 1;
   }
 
