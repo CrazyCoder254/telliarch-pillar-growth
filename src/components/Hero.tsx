@@ -31,73 +31,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Rotating Background Images */}
-      {heroBackgrounds.map((bg, index) => (
-        <motion.div
-          key={index}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${bg})` }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: currentBgIndex === index ? 1 : 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-        />
-      ))}
-      
-      {/* Overlay: mahogany → auburn → beige warm gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(135deg, hsla(15, 55%, 18%, 0.92) 0%, hsla(18, 65%, 32%, 0.78) 45%, hsla(36, 60%, 70%, 0.55) 100%)",
-        }}
-      />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
 
-      
-      {/* Animated Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            x: [0, 50, 0],
-            y: [0, -30, 0]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
-          animate={{ 
-            scale: [1.2, 1, 1.2],
-            x: [0, -50, 0],
-            y: [0, 30, 0]
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/2 w-64 h-64 bg-white/5 rounded-full blur-2xl"
-          animate={{ 
-            scale: [1, 1.3, 1],
-            rotate: [0, 180, 360]
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-        />
-      </div>
-
-      {/* Background Image Indicators */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
-        {heroBackgrounds.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentBgIndex(index)}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              currentBgIndex === index 
-                ? 'w-8 bg-white' 
-                : 'bg-white/50 hover:bg-white/80'
-            }`}
-          />
-        ))}
-      </div>
 
       <div className="container mx-auto px-4 py-32 relative z-10">
         <div className="max-w-4xl mx-auto text-center text-white space-y-8">
