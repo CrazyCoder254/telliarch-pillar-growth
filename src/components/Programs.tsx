@@ -26,9 +26,8 @@ const Programs = () => {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: `url(${aboutBackground})` }} />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/85 to-accent/90" />
+    <section className="relative py-24 overflow-hidden gradient-hero">
+
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
