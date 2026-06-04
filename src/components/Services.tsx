@@ -12,9 +12,8 @@ const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
 
   return (
-    <section id="services" className="relative py-24 overflow-hidden">
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed" style={{ backgroundImage: `url(${servicesBackground})` }} />
-      <div className="absolute inset-0 bg-gradient-to-tr from-accent/90 via-primary/85 to-primary/90" />
+    <section id="services" className="relative py-24 overflow-hidden gradient-hero">
+
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
