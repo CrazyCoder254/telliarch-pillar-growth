@@ -6,35 +6,8 @@ import contactBackground from "@/assets/contact-bg.jpg";
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative py-24 overflow-hidden">
-      {/* Background Image with Enhanced Visibility */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-fixed"
-        style={{ backgroundImage: `url(${contactBackground})` }}
-      />
-      
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-accent/90 via-primary/85 to-accent/90" />
-      
-      {/* Animated Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          className="absolute top-1/3 left-0 w-80 h-80 bg-secondary/15 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, 30, 0],
-            opacity: [0.3, 0.5, 0.3]
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div 
-          className="absolute bottom-1/3 right-0 w-80 h-80 bg-white/10 rounded-full blur-3xl"
-          animate={{ 
-            x: [0, -30, 0],
-            opacity: [0.2, 0.4, 0.2]
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+    <section id="contact" className="relative py-24 overflow-hidden gradient-hero">
+
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
