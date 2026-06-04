@@ -8,51 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Warm earth palette: Beige, Taupe, Hazel, Pecan, Mahogany, Caramel, Auburn */
-    --background: 15 55% 22%;              /* Mahogany (matches Call Back hero) */
-    --foreground: 36 50% 94%;              /* Warm beige text */
+    /* Brochure palette: Deep Mocha, Warm Clay, Espresso, Stone Taupe, Sand Beige, Cream White */
+    --background: 30 25% 97%;              /* Cream White #F8F6F4 */
+    --foreground: 25 14% 23%;              /* Espresso #443932 */
 
-    --card: 18 40% 28%;                    /* Pecan/Mahogany card */
-    --card-foreground: 36 50% 94%;
+    --card: 0 0% 100%;
+    --card-foreground: 25 14% 23%;
 
-    --popover: 36 42% 92%;
-    --popover-foreground: 15 45% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 25 14% 23%;
 
-    --primary: 15 55% 26%;                 /* Mahogany */
-    --primary-foreground: 36 50% 94%;
+    --primary: 24 19% 38%;                 /* Deep Mocha Brown #735E4E */
+    --primary-foreground: 30 25% 97%;
 
-    --secondary: 28 70% 48%;               /* Caramel */
-    --secondary-foreground: 15 45% 14%;
+    --secondary: 22 33% 61%;               /* Warm Clay #BC937A */
+    --secondary-foreground: 25 14% 23%;
 
-    --muted: 32 28% 78%;                   /* Taupe */
-    --muted-foreground: 18 25% 28%;
+    --muted: 24 24% 88%;
+    --muted-foreground: 25 14% 30%;
 
-    --accent: 18 65% 38%;                  /* Auburn */
-    --accent-foreground: 36 50% 96%;
+    --accent: 22 33% 61%;                  /* Warm Clay */
+    --accent-foreground: 25 14% 23%;
 
-    --destructive: 0 75% 45%;
+    --destructive: 0 70% 42%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 25% 68%;                  /* Hazel */
-    --input: 32 28% 80%;
-    --ring: 18 65% 38%;
+    --border: 22 11% 70%;                  /* Stone Taupe softened */
+    --input: 24 18% 88%;
+    --ring: 24 19% 38%;
 
     --radius: 0.75rem;
 
     /* Brand tones */
-    --beige: 36 42% 84%;
-    --taupe: 32 22% 60%;
-    --hazel: 28 35% 48%;
-    --pecan: 22 40% 32%;
-    --mahogany: 15 55% 26%;
-    --caramel: 28 70% 48%;
-    --auburn: 18 65% 38%;
+    --mocha: 24 19% 38%;
+    --clay: 22 33% 61%;
+    --espresso: 25 14% 23%;
+    --taupe: 22 11% 57%;
+    --sand: 24 24% 79%;
+    --cream: 30 25% 97%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(15 55% 22%) 0%, hsl(18 60% 36%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(18 65% 38%) 0%, hsl(28 70% 50%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(15 55% 22%) 0%, hsl(18 60% 32%) 50%, hsl(28 60% 45%) 100%);
-    --shadow-elegant: 0 10px 40px -10px hsl(15 55% 15% / 0.45);
-    --shadow-glow: 0 0 35px hsl(28 70% 48% / 0.35);
+    --gradient-primary: linear-gradient(135deg, hsl(24 19% 38%) 0%, hsl(22 33% 61%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(22 33% 61%) 0%, hsl(24 24% 79%) 100%);
+    --gradient-hero: linear-gradient(135deg, #735E4E 0%, #BC937A 55%, #D7C7BB 100%);
+    --shadow-elegant: 0 10px 40px -10px hsl(25 14% 18% / 0.25);
+    --shadow-glow: 0 0 35px hsl(22 33% 61% / 0.35);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
@@ -93,9 +92,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply text-foreground antialiased;
-    background: var(--gradient-hero);
-    background-attachment: fixed;
+    @apply text-foreground antialiased bg-background;
     font-feature-settings: "liga" 1, "calt" 1;
   }
 
@@ -163,7 +160,7 @@ All colors MUST be HSL.
   }
 
   .text-gold-gradient {
-    background: linear-gradient(135deg, hsl(36 80% 70%) 0%, hsl(28 75% 55%) 50%, hsl(18 70% 45%) 100%);
+    background: linear-gradient(135deg, #F8F6F4 0%, #D7C7BB 50%, #BC937A 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

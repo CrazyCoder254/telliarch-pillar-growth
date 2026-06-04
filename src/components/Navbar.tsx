@@ -47,11 +47,11 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const linkClass = "text-primary hover:text-accent transition-smooth font-medium";
+  const linkClass = "text-[#443932] hover:text-[#735E4E] transition-smooth font-medium";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-background/95 backdrop-blur-md border-b border-border ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#D7C7BB] backdrop-blur-md border-b border-[#9E8E83]/40 ${
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
@@ -89,7 +89,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-background rounded-lg p-4 shadow-elegant border border-border">
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#D7C7BB] rounded-lg p-4 shadow-elegant border border-[#9E8E83]/40">
             <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>About</Link>
             <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
             <button onClick={() => scrollToSection("values")} className={`block w-full text-left py-2 ${linkClass}`}>Values</button>
