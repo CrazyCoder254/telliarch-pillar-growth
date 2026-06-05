@@ -81,7 +81,7 @@ const Services = () => {
                   back={
                     <div className="w-full h-full rounded-xl shadow-2xl bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40 p-6 flex flex-col text-center">
                       <h3 className="text-xl font-bold text-secondary mb-2">{service.title}</h3>
-                      <p className="text-white/85 text-sm italic mb-3">{service.tagline}</p>
+                      <p className="text-[#F0D4BC] text-sm italic mb-3 font-medium">{service.tagline}</p>
                       <p className="text-white/80 text-sm flex-1 overflow-hidden line-clamp-6">
                         {service.shortDescription}
                       </p>
