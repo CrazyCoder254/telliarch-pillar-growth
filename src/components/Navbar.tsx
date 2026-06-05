@@ -47,11 +47,11 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const linkClass = "text-[#443932] hover:text-[#735E4E] transition-smooth font-medium";
+  const linkClass = "text-white/90 hover:text-secondary transition-smooth font-medium";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#D7C7BB] backdrop-blur-md border-b border-[#9E8E83]/40 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#2E241C] backdrop-blur-md border-b border-[#9E8E83]/30 ${
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
