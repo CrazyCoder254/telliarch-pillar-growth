@@ -3,10 +3,28 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Bell, ArrowRight } from "lucide-react";
-import servicesBackground from "@/assets/services-bg.jpg";
 import ServiceSubscribeDialog from "./ServiceSubscribeDialog";
 import FlipCard from "./FlipCard";
 import { services } from "@/data/services";
+import svcIndividual from "@/assets/svc-individual.jpg";
+import svcFamily from "@/assets/svc-family.jpg";
+import svcEducation from "@/assets/svc-education.jpg";
+import svcCorporate from "@/assets/svc-corporate.jpg";
+import svcGroup from "@/assets/svc-group.jpg";
+import svcSpecialized from "@/assets/svc-specialized.jpg";
+import svcTraining from "@/assets/svc-training.jpg";
+import svcSustainability from "@/assets/svc-sustainability.jpg";
+
+const serviceImages: Record<string, string> = {
+  "individual-therapy": svcIndividual,
+  "family-integration": svcFamily,
+  "education-institutions": svcEducation,
+  "corporate-wellbeing": svcCorporate,
+  "group-therapy": svcGroup,
+  "specialized-therapy": svcSpecialized,
+  "training-workshops": svcTraining,
+  "sustainability-wellbeing": svcSustainability,
+};
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
@@ -24,7 +42,7 @@ const Services = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">What We Do</p>
-          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-gold-gradient">Our Services</span></h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg text-white">Our Services</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
           <p className="text-lg text-white/90">
             Hover any card to reveal more, then read the full service details.
@@ -46,12 +64,18 @@ const Services = () => {
                   height="h-[380px]"
                   respectReducedMotion={false}
                   front={
-                    <div className="w-full h-full rounded-xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 p-8 flex flex-col items-center justify-center text-center">
-                      <div className="w-20 h-20 gradient-primary rounded-2xl flex items-center justify-center mb-6 shadow-lg ring-2 ring-secondary/40">
-                        <Icon className="text-secondary" size={36} />
+                    <div
+                      className="relative w-full h-full rounded-xl shadow-2xl overflow-hidden border border-white/20 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${serviceImages[service.slug]})` }}
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#2E241C]/95 via-[#443932]/70 to-[#735E4E]/30" />
+                      <div className="relative z-10 w-full h-full p-8 flex flex-col items-center justify-end text-center">
+                        <div className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center mb-4 ring-2 ring-secondary/50 shadow-lg">
+                          <Icon className="text-secondary" size={30} />
+                        </div>
+                        <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">{service.title}</h3>
+                        <p className="text-white/85 text-sm italic">Hover to learn more</p>
                       </div>
-                      <h3 className="text-2xl font-bold text-secondary mb-3">{service.title}</h3>
-                      <p className="text-white/70 text-sm italic">Hover to learn more</p>
                     </div>
                   }
                   back={

@@ -47,11 +47,11 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const linkClass = "text-[#443932] hover:text-[#735E4E] transition-smooth font-medium";
+  const linkClass = "text-white/90 hover:text-secondary transition-smooth font-medium";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#D7C7BB] backdrop-blur-md border-b border-[#9E8E83]/40 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#2E241C] backdrop-blur-md border-b border-[#9E8E83]/30 ${
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Telliarch Logo" className="h-10 md:h-12 w-auto object-contain" />
+            <img src={logo} alt="Telliarch Logo" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
           </Link>
 
           {/* Desktop Menu */}
@@ -80,7 +80,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-primary"
+            className="md:hidden text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -89,7 +89,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#D7C7BB] rounded-lg p-4 shadow-elegant border border-[#9E8E83]/40">
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#2E241C] rounded-lg p-4 shadow-elegant border border-[#9E8E83]/30">
             <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>About</Link>
             <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
             <button onClick={() => scrollToSection("values")} className={`block w-full text-left py-2 ${linkClass}`}>Values</button>
@@ -97,7 +97,7 @@ const Navbar = () => {
             <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Gallery</Link>
             <button onClick={() => scrollToSection("contact")} className={`block w-full text-left py-2 ${linkClass}`}>Contact</button>
             <div className="flex items-center gap-2 py-2">
-              <span className="text-primary font-medium">Theme:</span>
+              <span className="text-white/90 font-medium">Theme:</span>
               <ThemeToggle />
             </div>
             {user ? (

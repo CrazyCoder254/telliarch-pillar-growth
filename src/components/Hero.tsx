@@ -1,14 +1,14 @@
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
-import heroBackground1 from "@/assets/hero-bg.jpg";
-import heroBackground2 from "@/assets/hero-bg-2.jpg";
-import heroBackground3 from "@/assets/hero-bg-3.jpg";
-import heroBackground4 from "@/assets/hero-bg-4.jpg";
+import wellness1 from "@/assets/wellness-1.jpg";
+import wellness2 from "@/assets/wellness-2.jpg";
+import wellness3 from "@/assets/wellness-3.jpg";
+import wellness4 from "@/assets/wellness-4.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-const heroBackgrounds = [heroBackground1, heroBackground2, heroBackground3, heroBackground4];
+const heroBackgrounds = [wellness1, wellness2, wellness3, wellness4];
 
 const Hero = () => {
   const { count: businessesCount, ref: businessesRef } = useCountUp(100, 2000);
@@ -32,6 +32,35 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
+      {/* Mental wellness slideshow */}
+      <AnimatePresence mode="sync">
+        <motion.div
+          key={currentBgIndex}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 0.4, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.4, ease: "easeInOut" }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroBackgrounds[currentBgIndex]})` }}
+          aria-hidden
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#2E241C]/85 via-[#443932]/70 to-[#735E4E]/60" aria-hidden />
+
+      {/* Slideshow indicators */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {heroBackgrounds.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentBgIndex(i)}
+            aria-label={`Show wellness image ${i + 1}`}
+            className={`h-1.5 rounded-full transition-all ${
+              i === currentBgIndex ? "w-8 bg-secondary" : "w-3 bg-white/40 hover:bg-white/70"
+            }`}
+          />
+        ))}
+      </div>
+
 
 
       <div className="container mx-auto px-4 py-32 relative z-10">
