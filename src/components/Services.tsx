@@ -3,10 +3,28 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Bell, ArrowRight } from "lucide-react";
-import servicesBackground from "@/assets/services-bg.jpg";
 import ServiceSubscribeDialog from "./ServiceSubscribeDialog";
 import FlipCard from "./FlipCard";
 import { services } from "@/data/services";
+import svcIndividual from "@/assets/svc-individual.jpg";
+import svcFamily from "@/assets/svc-family.jpg";
+import svcEducation from "@/assets/svc-education.jpg";
+import svcCorporate from "@/assets/svc-corporate.jpg";
+import svcGroup from "@/assets/svc-group.jpg";
+import svcSpecialized from "@/assets/svc-specialized.jpg";
+import svcTraining from "@/assets/svc-training.jpg";
+import svcSustainability from "@/assets/svc-sustainability.jpg";
+
+const serviceImages: Record<string, string> = {
+  "individual-therapy": svcIndividual,
+  "family-integration": svcFamily,
+  "education-institutions": svcEducation,
+  "corporate-wellbeing": svcCorporate,
+  "group-therapy": svcGroup,
+  "specialized-therapy": svcSpecialized,
+  "training-workshops": svcTraining,
+  "sustainability-wellbeing": svcSustainability,
+};
 
 const Services = () => {
   const [selectedService, setSelectedService] = useState<string | null>(null);
