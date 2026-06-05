@@ -59,7 +59,16 @@ const Footer = () => {
               © {new Date().getFullYear()} TELLIARCH. All rights reserved.
             </p>
             <p className="text-sm text-primary-foreground/60 mt-1">
-              Developed by <span className="font-semibold text-secondary">KenTech Softwares</span> in 2025
+              Developed by{" "}
+              <a
+                href="https://www.kentechsoftwares.co.ke/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-secondary hover:underline"
+              >
+                KenTech Softwares
+              </a>{" "}
+              in 2025
             </p>
           </div>
         </div>
