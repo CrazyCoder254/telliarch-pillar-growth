@@ -42,7 +42,7 @@ const Services = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">What We Do</p>
-          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-gold-gradient">Our Services</span></h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg text-white">Our Services</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
           <p className="text-lg text-white/90">
             Hover any card to reveal more, then read the full service details.
