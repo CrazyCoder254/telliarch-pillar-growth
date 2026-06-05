@@ -46,7 +46,7 @@ const WhoWeServe = () => (
               <div className="w-16 h-16 mx-auto rounded-full gradient-accent flex items-center justify-center mb-4 ring-2 ring-secondary/50 shadow-lg">
                 <g.icon className="text-secondary" size={26} />
               </div>
-              <p className="font-semibold text-secondary text-sm">{g.label}</p>
+              <p className="font-semibold text-[#F0D4BC] text-sm drop-shadow">{g.label}</p>
             </div>
           </motion.div>
         ))}
