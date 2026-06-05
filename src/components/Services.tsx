@@ -74,7 +74,7 @@ const Services = () => {
                           <Icon className="text-secondary" size={30} />
                         </div>
                         <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">{service.title}</h3>
-                        <p className="text-white/85 text-sm italic">Hover to learn more</p>
+                        <p className="text-[#F0D4BC] text-sm italic font-medium drop-shadow">Hover to learn more</p>
                       </div>
                     </div>
                   }
