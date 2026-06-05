@@ -75,7 +75,7 @@ const Newsletter = () => {
             </motion.div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-              Stay Updated
+              Nurture Your Wellbeing
             </h2>
             
             <motion.div 
@@ -91,8 +91,8 @@ const Newsletter = () => {
             />
             
             <p className="text-lg text-white/90 mb-8">
-              Subscribe to our newsletter for the latest insights on business strategy, 
-              HR trends, financial tips, and wellness resources delivered straight to your inbox.
+              Join our community to receive gentle reminders, mental wellness tips,
+              counselling insights and reflections to support your healing and growth journey.
             </p>
           </motion.div>
 
