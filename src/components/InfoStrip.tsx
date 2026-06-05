@@ -24,8 +24,8 @@ const InfoStrip = () => {
               <Clock size={18} />
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-wide">Open Hours</p>
-              <p className="text-sm opacity-90">Mon — Fri: 8 am — 6 pm · Sat: 9 am — 1 pm</p>
+              <p className="text-xs font-bold uppercase tracking-wide">Availability</p>
+              <p className="text-sm opacity-90">Available 24/7 · Always here for you</p>
             </div>
           </div>
 

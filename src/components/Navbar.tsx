@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { ThemeToggle } from "./ThemeToggle";
 import TopBar from "./TopBar";
-import logo from "@/assets/logo.png";
+import logoAsset from "@/assets/telliarch-logo.jpeg.asset.json";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -58,8 +58,8 @@ const Navbar = () => {
       <TopBar />
       <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <img src={logo} alt="Telliarch Logo" className="h-10 md:h-12 w-auto object-contain brightness-0 invert" />
+          <Link to="/" className="flex items-center gap-2 bg-[#F8F6F4] rounded-lg px-2 py-1 shadow-sm">
+            <img src={logoAsset.url} alt="Telliarch Mental Wellness Network Logo" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
 
           {/* Desktop Menu */}
