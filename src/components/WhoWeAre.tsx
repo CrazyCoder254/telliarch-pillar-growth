@@ -49,13 +49,13 @@ const WhoWeAre = () => (
                   <div className="w-16 h-16 rounded-2xl gradient-accent flex items-center justify-center mb-5 ring-2 ring-secondary/50 shadow-lg">
                     <p.icon className="text-secondary" size={28} />
                   </div>
-                  <h3 className="text-xl font-bold text-secondary">{p.title}</h3>
+                  <h3 className="text-xl font-bold text-white drop-shadow-lg">{p.title}</h3>
                   <p className="text-white/60 text-xs italic mt-3">Hover to learn more</p>
                 </div>
               }
               back={
                 <div className="w-full h-full bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40 rounded-2xl p-8 shadow-2xl flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-bold text-secondary mb-3">{p.title}</h3>
+                  <h3 className="text-lg font-bold text-[#F0D4BC] mb-3 drop-shadow">{p.title}</h3>
                   <p className="text-white/90 leading-relaxed">{p.desc}</p>
                 </div>
               }
