@@ -30,7 +30,7 @@ const Contact = () => {
             }}
           />
           <p className="text-lg text-white/90">
-            Ready to transform your business? Contact us today to discuss how we can help you achieve your goals.
+            Ready to transform your journey? Contact us today to discuss how we can help you achieve your goals.
           </p>
         </motion.div>
 
