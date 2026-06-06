@@ -12,6 +12,7 @@ import Gallery from "./pages/Gallery";
 import Admin from "./pages/Admin";
 import AboutPage from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
+import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -34,6 +35,7 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/resources" element={<Resources />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
