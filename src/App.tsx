@@ -12,7 +12,8 @@ import Gallery from "./pages/Gallery";
 import Admin from "./pages/Admin";
 import AboutPage from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
-import Resources from "./pages/Resources";
+import News from "./pages/News";
+import CommunityBlog from "./pages/CommunityBlog";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 
@@ -35,7 +36,9 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
-            <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/news" element={<News />} />
+            <Route path="/resources/blog" element={<CommunityBlog />} />
+            <Route path="/resources" element={<News />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
