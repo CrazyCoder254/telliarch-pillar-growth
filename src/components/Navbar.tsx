@@ -68,7 +68,18 @@ const Navbar = () => {
             <button onClick={() => scrollToSection("services")} className={linkClass}>Services</button>
             <button onClick={() => scrollToSection("values")} className={linkClass}>Values</button>
             <Link to="/careers" className={linkClass}>Careers</Link>
-            <Link to="/resources" className={linkClass}>Resources</Link>
+            <div className="relative group">
+              <button className={`${linkClass} inline-flex items-center gap-1`}>
+                Resources
+                <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.24 4.38a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
+              </button>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
+                <div className="bg-[#2E241C] border border-[#9E8E83]/40 rounded-lg shadow-elegant py-2 min-w-[160px]">
+                  <Link to="/resources/news" className="block px-4 py-2 text-white/90 hover:text-secondary hover:bg-white/5 transition-smooth">News</Link>
+                  <Link to="/resources/blog" className="block px-4 py-2 text-white/90 hover:text-secondary hover:bg-white/5 transition-smooth">Blogs</Link>
+                </div>
+              </div>
+            </div>
             <Link to="/gallery" className={linkClass}>Gallery</Link>
             <button onClick={() => scrollToSection("contact")} className={linkClass}>Contact</button>
             <ThemeToggle />
@@ -95,7 +106,8 @@ const Navbar = () => {
             <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
             <button onClick={() => scrollToSection("values")} className={`block w-full text-left py-2 ${linkClass}`}>Values</button>
             <Link to="/careers" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Careers</Link>
-            <Link to="/resources" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Resources</Link>
+            <Link to="/resources/news" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Resources — News</Link>
+            <Link to="/resources/blog" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Resources — Blogs</Link>
             <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Gallery</Link>
             <button onClick={() => scrollToSection("contact")} className={`block w-full text-left py-2 ${linkClass}`}>Contact</button>
             <div className="flex items-center gap-2 py-2">
