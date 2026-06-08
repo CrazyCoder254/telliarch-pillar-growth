@@ -86,12 +86,18 @@ const Services = () => {
                         {service.shortDescription}
                       </p>
                       <div className="flex flex-col gap-2 mt-4">
-                        <Link to={`/services/${service.slug}`} onClick={(e) => e.stopPropagation()}>
-                          <Button variant="hero" size="sm" className="w-full">
-                            Read More <ArrowRight className="ml-2 h-4 w-4" />
-                          </Button>
-                        </Link>
                         <Button
+                              variant="hero"
+                              size="sm"
+                              className="w-full"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                window.location.href = `/services/${service.slug}`;
+                              }}
+                            >
+                              Read More
+                            </Button>
+                          <Button
                           variant="outline"
                           size="sm"
                           className="w-full bg-white/10 text-white border-white/30 hover:bg-white/20"
