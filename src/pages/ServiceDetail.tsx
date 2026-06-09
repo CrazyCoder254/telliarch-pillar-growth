@@ -42,7 +42,7 @@ const ServiceDetail = () => {
               <Icon className="text-secondary" size={36} />
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-5 drop-shadow-2xl">
-              <span className="text-gold-gradient">{service.title}</span>
+              <span className="text-warm-bright">{service.title}</span>
             </h1>
             <p className="text-xl text-white/90 leading-relaxed mb-8 max-w-3xl">{service.shortDescription}</p>
             <div className="flex flex-wrap gap-4">
