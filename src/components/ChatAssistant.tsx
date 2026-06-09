@@ -11,6 +11,36 @@ type Message = {
   content: string;
 };
 
+const messages = ["Need help?", "Chat with us", "We're online!"];
+
+const WhatsAppAnimatedText = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % messages.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <span className="relative inline-flex items-center h-5 overflow-hidden min-w-[90px]">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={index}
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.35, ease: "easeInOut" }}
+          className="absolute text-sm whitespace-nowrap font-semibold"
+        >
+          {messages[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+};
+
 const ChatAssistant = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
