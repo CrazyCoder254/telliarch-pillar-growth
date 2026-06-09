@@ -22,7 +22,7 @@ const PartnerCTA = () => {
           className="max-w-3xl mx-auto text-center bg-background/10 backdrop-blur-md border border-background/20 rounded-2xl p-10 md:p-14 shadow-2xl"
         >
           <h3 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-            Ready to partner with <span className="text-gold-gradient">TELLIARCH</span>?
+            Ready to partner with <span className="text-warm-bright">TELLIARCH</span>?
           </h3>
           <p className="text-primary-foreground/85 text-lg mb-8">
             Let's start a conversation about how we can support your growth journey.

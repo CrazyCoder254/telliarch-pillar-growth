@@ -24,7 +24,7 @@ const OurApproach = () => (
         <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">Our Approach</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
           <span className="text-white">Holistic and </span>
-          <span className="text-gold-gradient">practical care</span>
+          <span className="text-warm-bright">practical care</span>
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
         <p className="text-lg text-white/90 leading-relaxed">

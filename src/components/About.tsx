@@ -46,7 +46,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">About Us</p>
-          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">Mental health is the </span><span className="text-gold-gradient">foundation of all growth</span></h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">Mental health is the </span><span className="text-warm-bright">foundation of all growth</span></h2>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
             animate={{ 
@@ -96,7 +96,7 @@ const About = () => {
                       <div className="w-20 h-20 gradient-accent rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg ring-2 ring-secondary/50">
                         <item.icon className="text-secondary" size={36} />
                       </div>
-                      <h3 className="text-2xl text-secondary font-bold">{item.title}</h3>
+                      <h3 className="text-2xl text-warm-bright font-bold drop-shadow">{item.title}</h3>
                       <p className="text-white/60 text-xs italic mt-3">Hover to learn more</p>
                     </CardContent>
                   </Card>
@@ -104,7 +104,7 @@ const About = () => {
                 back={
                   <Card className="shadow-2xl h-full border-none bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40">
                     <CardContent className="p-8 text-center h-full flex flex-col items-center justify-center">
-                      <h3 className="mb-4 text-xl text-secondary font-bold">{item.title}</h3>
+                      <h3 className="mb-4 text-xl text-warm-bright font-bold drop-shadow">{item.title}</h3>
                       <p className="text-white/90 leading-relaxed">{item.description}</p>
                     </CardContent>
                   </Card>
@@ -128,7 +128,7 @@ const About = () => {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <p className="font-semibold text-secondary mb-2 text-lg">Registered Office</p>
+                  <p className="font-semibold text-warm-bright mb-2 text-lg drop-shadow">Registered Office</p>
                   <p className="text-white/80">
                     P.O BOX 395-10230<br />
                     SAGANA, KENYA
@@ -138,7 +138,7 @@ const About = () => {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <p className="font-semibold text-secondary mb-2 text-lg">Our Expertise</p>
+                  <p className="font-semibold text-warm-bright mb-2 text-lg drop-shadow">Our Expertise</p>
                   <p className="text-white/80">
                     Strategic Management, Human Resources,
                     Marketing, Psychology & Counselling

@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
-import { Brain, Sparkles, TrendingUp } from "lucide-react";
 import aboutBackground from "@/assets/about-bg.jpg";
+import imgMental from "@/assets/pillar-mental-health.jpg";
+import imgDev from "@/assets/pillar-development.jpg";
+import imgGrowth from "@/assets/pillar-growth.jpg";
 import FlipCard from "./FlipCard";
 
 const pillars = [
-  { icon: Brain, title: "Mental Health & Emotional Wellness", desc: "Evidence-based therapy and counselling that restores stability and clarity." },
-  { icon: Sparkles, title: "Personal & Professional Development", desc: "Coaching that grows confidence, capacity and direction." },
-  { icon: TrendingUp, title: "Sustainable Growth Strategies", desc: "Long-term frameworks that help people and organizations thrive." },
+  { img: imgMental, title: "Mental Health & Emotional Wellness", desc: "Evidence-based therapy and counselling that restores stability and clarity." },
+  { img: imgDev, title: "Personal & Professional Development", desc: "Coaching that grows confidence, capacity and direction." },
+  { img: imgGrowth, title: "Sustainable Growth Strategies", desc: "Long-term frameworks that help people and organizations thrive." },
 ];
 
 const WhoWeAre = () => (
@@ -22,10 +24,10 @@ const WhoWeAre = () => (
         transition={{ duration: 0.6 }}
         className="max-w-3xl mx-auto text-center mb-14"
       >
-        <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">Who We Are</p>
+        <p className="text-sm uppercase tracking-widest text-warm-bright font-semibold mb-3">Who We Are</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
           <span className="text-white">A growth-centered </span>
-          <span className="text-gold-gradient">mental health & development practice</span>
+          <span className="text-warm-bright">mental health & development practice</span>
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
         <p className="text-lg text-white/90 leading-relaxed">
@@ -43,19 +45,27 @@ const WhoWeAre = () => (
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
             <FlipCard
-              height="h-[280px]"
+              height="h-[320px]"
               front={
-                <div className="w-full h-full bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl flex flex-col items-center justify-center text-center">
-                  <div className="w-16 h-16 rounded-2xl gradient-accent flex items-center justify-center mb-5 ring-2 ring-secondary/50 shadow-lg">
-                    <p.icon className="text-secondary" size={28} />
+                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl border border-white/20">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    loading="lazy"
+                    width={800}
+                    height={800}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 text-center">
+                    <h3 className="text-xl font-bold text-warm-bright drop-shadow-lg">{p.title}</h3>
+                    <p className="text-white/80 text-xs italic mt-2">Hover to learn more</p>
                   </div>
-                  <h3 className="text-xl font-bold text-white drop-shadow-lg">{p.title}</h3>
-                  <p className="text-white/60 text-xs italic mt-3">Hover to learn more</p>
                 </div>
               }
               back={
                 <div className="w-full h-full bg-gradient-to-br from-primary via-accent to-primary border border-secondary/40 rounded-2xl p-8 shadow-2xl flex flex-col items-center justify-center text-center">
-                  <h3 className="text-lg font-bold text-[#F0D4BC] mb-3 drop-shadow">{p.title}</h3>
+                  <h3 className="text-lg font-bold text-warm-bright mb-3 drop-shadow">{p.title}</h3>
                   <p className="text-white/90 leading-relaxed">{p.desc}</p>
                 </div>
               }

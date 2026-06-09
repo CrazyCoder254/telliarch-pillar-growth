@@ -72,7 +72,7 @@ const Values = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">Our Core </span><span className="text-gold-gradient">Values</span></h2>
+          <h2 className="mb-6 text-4xl md:text-5xl font-bold drop-shadow-lg"><span className="text-white">Our Core </span><span className="text-warm-bright">Values</span></h2>
           <motion.div 
             className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full"
             animate={{ 

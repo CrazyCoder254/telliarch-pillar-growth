@@ -38,7 +38,7 @@ const QuickServices = () => {
               <div className="w-14 h-14 rounded-xl gradient-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-smooth ring-2 ring-secondary/40">
                 <item.icon className="text-secondary" size={26} />
               </div>
-              <h3 className="text-lg font-bold mb-2 text-gold-gradient">{item.title}</h3>
+              <h3 className="text-lg font-bold mb-2 text-warm-bright">{item.title}</h3>
               <p className="text-sm text-card-foreground/80 leading-relaxed">{item.description}</p>
             </motion.div>
           ))}

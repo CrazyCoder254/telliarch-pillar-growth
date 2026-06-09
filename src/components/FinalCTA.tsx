@@ -15,7 +15,7 @@ const FinalCTA = () => {
           className="max-w-3xl mx-auto text-center text-white"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Ready to begin your <span className="text-gold-gradient">growth journey?</span>
+            Ready to begin your <span className="text-warm-bright">growth journey?</span>
           </h2>
           <p className="text-lg text-white/90 mb-8">
             Book a consultation or partner with us today.

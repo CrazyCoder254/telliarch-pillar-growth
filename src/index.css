@@ -166,4 +166,12 @@ All colors MUST be HSL.
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
+
+  /* Readable warm accent for use on light/cream backgrounds */
+  .text-warm-solid {
+    color: #8A4B2A;
+  }
+  .text-warm-bright {
+    color: #F0D4BC;
+  }
 }

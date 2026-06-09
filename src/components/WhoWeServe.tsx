@@ -30,7 +30,7 @@ const WhoWeServe = () => (
         <p className="text-sm uppercase tracking-widest text-secondary font-semibold mb-3">Who We Serve</p>
         <h2 className="text-4xl md:text-5xl font-bold mb-6 drop-shadow-lg">
           <span className="text-white">Care & growth for </span>
-          <span className="text-gold-gradient">every season of life</span>
+          <span className="text-warm-bright">every season of life</span>
         </h2>
         <div className="w-24 h-1 bg-gradient-to-r from-secondary via-white to-secondary mx-auto mb-6 rounded-full" />
       </motion.div>

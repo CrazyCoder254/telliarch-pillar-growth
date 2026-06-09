@@ -73,7 +73,7 @@ const Hero = () => {
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl"
           >
             <span className="text-white">Integrated </span>
-            <span className="text-gold-gradient">Mental Health & Growth Solutions</span>
+            <span className="text-warm-bright">Mental Health & Growth Solutions</span>
             <span className="text-white"> for Individuals, Families & Organizations</span>
           </motion.h1>
           
