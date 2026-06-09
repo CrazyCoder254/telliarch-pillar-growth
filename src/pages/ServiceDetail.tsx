@@ -93,7 +93,7 @@ const ServiceDetail = () => {
                 transition={{ duration: 0.5 }}
                 className="text-3xl md:text-4xl font-bold mb-6"
               >
-                <span className="text-gold-gradient">{section.heading}</span>
+                <span className="text-warm-solid">{section.heading}</span>
               </motion.h3>
               {section.intro && <p className="text-lg text-muted-foreground mb-8 leading-relaxed">{section.intro}</p>}
 
@@ -138,7 +138,7 @@ const ServiceDetail = () => {
                       style={{ transformStyle: "preserve-3d" }}
                       className="bg-card border border-secondary/20 rounded-xl p-6 shadow-elegant hover:shadow-glow transition-smooth"
                     >
-                      <h4 className="font-bold text-lg mb-2 text-gold-gradient">{sub.title}</h4>
+                      <h4 className="font-bold text-lg mb-2 text-warm-solid">{sub.title}</h4>
                       <p className="text-card-foreground/80 leading-relaxed mb-2">{sub.description}</p>
                       {sub.example && (
                         <p className="text-sm text-muted-foreground italic border-l-2 border-secondary/40 pl-3 mt-3">
@@ -169,7 +169,7 @@ const ServiceDetail = () => {
         <div className="container mx-auto px-4 max-w-3xl text-center">
           <h3 className="text-3xl md:text-4xl font-bold mb-5">
             <span className="text-foreground">You don't have to walk this </span>
-            <span className="text-gold-gradient">journey alone.</span>
+            <span className="text-warm-solid">journey alone.</span>
           </h3>
           <p className="text-lg text-muted-foreground mb-8">
             We'd be honoured to support you with care, professionalism and respect.
@@ -189,7 +189,7 @@ const ServiceDetail = () => {
       <section className="py-16 bg-muted/40">
         <div className="container mx-auto px-4">
           <h3 className="text-2xl font-bold mb-8 text-center">
-            <span className="text-foreground">Explore Other </span><span className="text-gold-gradient">Services</span>
+            <span className="text-foreground">Explore Other </span><span className="text-warm-solid">Services</span>
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {services.filter((s) => s.slug !== service.slug).slice(0, 4).map((s) => {
