@@ -64,6 +64,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-5 text-sm">
+            <Link to="/" className={linkClass}>Home</Link>
             <Link to="/about" className={linkClass}>About</Link>
             <button onClick={() => scrollToSection("services")} className={linkClass}>Services</button>
             <button onClick={() => scrollToSection("values")} className={linkClass}>Values</button>
