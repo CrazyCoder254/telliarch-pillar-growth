@@ -64,6 +64,7 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-5 text-sm">
+            <Link to="/" className={linkClass}>Home</Link>
             <Link to="/about" className={linkClass}>About</Link>
             <button onClick={() => scrollToSection("services")} className={linkClass}>Services</button>
             <button onClick={() => scrollToSection("values")} className={linkClass}>Values</button>
@@ -102,6 +103,7 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#2E241C] rounded-lg p-4 shadow-elegant border border-[#9E8E83]/30">
+            <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Home</Link>
             <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>About</Link>
             <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
             <button onClick={() => scrollToSection("values")} className={`block w-full text-left py-2 ${linkClass}`}>Values</button>
