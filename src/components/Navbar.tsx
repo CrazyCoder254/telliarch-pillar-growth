@@ -67,7 +67,6 @@ const Navbar = () => {
             <Link to="/" className={linkClass}>Home</Link>
             <Link to="/about" className={linkClass}>About</Link>
             <button onClick={() => scrollToSection("services")} className={linkClass}>Services</button>
-            <button onClick={() => scrollToSection("values")} className={linkClass}>Values</button>
             <Link to="/careers" className={linkClass}>Careers</Link>
             <div className="relative group">
               <button className={`${linkClass} inline-flex items-center gap-1`}>
@@ -106,7 +105,6 @@ const Navbar = () => {
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Home</Link>
             <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>About</Link>
             <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
-            <button onClick={() => scrollToSection("values")} className={`block w-full text-left py-2 ${linkClass}`}>Values</button>
             <Link to="/careers" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Careers</Link>
             <Link to="/resources/news" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Resources — News</Link>
             <Link to="/resources/blog" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Resources — Blogs</Link>
