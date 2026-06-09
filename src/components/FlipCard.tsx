@@ -67,8 +67,8 @@ const FlipCard = ({
         )}
         onClick={() => tappable && setTapFlipped((p) => !p)}
       >
-        <div className="absolute inset-0 backface-hidden">{front}</div>
-        <div className="absolute inset-0 backface-hidden rotate-y-180">{back}</div>
+        <div className={cn("absolute inset-0 backface-hidden", isFlipped ? "pointer-events-none" : "group-hover:pointer-events-none")}>{front}</div>
+        <div className={cn("absolute inset-0 backface-hidden rotate-y-180", !isFlipped && "pointer-events-none group-hover:pointer-events-auto")}>{back}</div>
       </div>
     </div>
   );
