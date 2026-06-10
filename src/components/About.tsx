@@ -140,8 +140,7 @@ const About = () => {
                 >
                   <p className="font-semibold text-warm-bright mb-2 text-lg drop-shadow">Our Expertise</p>
                   <p className="text-white/80">
-                    Strategic Management, Human Resources,
-                    Marketing, Psychology & Counselling
+                    Providing evidence-based mental health, wellbeing, and personal development services that foster resilience, sustainable development, and lasting positive change.
                   </p>
                 </motion.div>
               </div>
