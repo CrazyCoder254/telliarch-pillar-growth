@@ -23,6 +23,7 @@ const Index = () => {
       <Navbar />
       <Hero />
       <InfoStrip />
+      <Challenges />
       <WhoWeAre />
       <Services />
       <WhoWeServe />
