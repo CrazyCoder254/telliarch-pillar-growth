@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import InfoStrip from "@/components/InfoStrip";
+import Challenges from "@/components/Challenges";
 import WhoWeAre from "@/components/WhoWeAre";
 import Services from "@/components/Services";
 import WhoWeServe from "@/components/WhoWeServe";
