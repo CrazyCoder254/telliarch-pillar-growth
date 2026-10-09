@@ -5,61 +5,54 @@ import {
   LifeBuoy,
   CloudRain,
   HeartHandshake,
-  Flame,
   Baby,
-  UserX,
   ArrowRight,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 const challenges = [
   {
+    slug: "addiction-substance-abuse",
     icon: Wine,
     title: "Addiction & Substance Abuse",
     struggle: "When alcohol or substances start to control your choices, relationships and future.",
     hope: "Recovery is possible — and it starts with one honest conversation.",
   },
   {
+    slug: "marital-family-conflicts",
     icon: HeartCrack,
-    title: "Marital & Family Conflicts",
-    struggle: "Constant arguments, silence, or distance where love and connection used to be.",
-    hope: "Families can heal, reconnect and rebuild trust again.",
+    title: "Navigating Family Challenges and Life Transitions",
+    struggle: "Family changes, conflict, and life transitions can affect everyone differently.",
+    hope: "Every family has a story. Every transition deserves understanding.",
   },
   {
+    slug: "suicidal-thoughts-self-harm",
     icon: LifeBuoy,
-    title: "Suicidal Thoughts & Self-Harm",
+    title: "Suicide & Suicide Prevention",
     struggle: "Feeling like the pain will never end, or that the world is better without you.",
     hope: "Your life matters. There is help, and there is hope — right now.",
   },
   {
+    slug: "anxiety-depression",
     icon: CloudRain,
-    title: "Anxiety & Depression",
-    struggle: "The heaviness that makes ordinary days feel impossible and joy feel far away.",
-    hope: "You can regain calm, clarity and control of your life again.",
+    title: "Common Mental Health Conditions",
+    struggle: "Mental health can shape how we think, feel, cope, and relate to others. Changes are worth understanding and discussing.",
+    hope: "Understanding yourself. Recognising change. Seeking support.",
   },
   {
-    icon: Flame,
-    title: "Stress & Burnout",
-    struggle: "Work, school or responsibilities pushing you past your limits every single day.",
-    hope: "Sustainable balance is not a luxury — it's something you can learn.",
-  },
-  {
+    slug: "grief-loss",
     icon: HeartHandshake,
     title: "Grief & Loss",
     struggle: "Losing someone or something dear, and feeling like no one truly understands.",
-    hope: "You don't have to walk the journey of loss alone.",
+    hope: "Healing does not mean forgetting. You can learn to live with what has changed.",
   },
   {
+    slug: "child-teen-struggles",
     icon: Baby,
-    title: "Child & Teen Struggles",
-    struggle: "Your child is withdrawn, rebellious, anxious — and you don't know how to reach them.",
-    hope: "With the right support, young people can thrive again.",
-  },
-  {
-    icon: UserX,
-    title: "Loneliness & Isolation",
-    struggle: "Being surrounded by people, yet feeling completely unseen and unheard.",
-    hope: "Meaningful connection is possible — and it can begin today.",
+    title: "Children and Teenagers: Understanding Developmental Challenges",
+    struggle: "Growing up brings new emotional, social, and developmental needs for children and families to navigate.",
+    hope: "Every stage of growing up brings new needs, questions, and possibilities.",
   },
 ];
 
@@ -106,7 +99,7 @@ const Challenges = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
               whileHover={{ y: -6 }}
-              className="group bg-card rounded-2xl p-6 shadow-elegant hover:shadow-glow transition-smooth border border-secondary/30 flex flex-col"
+              className="group bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-elegant hover:shadow-glow transition-smooth border border-secondary/30 flex flex-col"
             >
               <div className="w-12 h-12 rounded-xl gradient-accent flex items-center justify-center mb-4 ring-2 ring-secondary/40 group-hover:scale-110 transition-smooth">
                 <c.icon className="text-secondary" size={24} />
@@ -118,6 +111,11 @@ const Challenges = () => {
               <p className="text-sm font-semibold text-warm-solid leading-snug border-t border-border/60 pt-3">
                 {c.hope}
               </p>
+              <Button asChild variant="link" className="mt-4 h-auto justify-start p-0 text-warm-solid">
+                <Link to={`/challenges/${c.slug}`}>
+                  Read more <ArrowRight size={16} />
+                </Link>
+              </Button>
             </motion.div>
           ))}
         </div>

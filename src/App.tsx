@@ -12,6 +12,7 @@ import Gallery from "./pages/Gallery";
 import Admin from "./pages/Admin";
 import AboutPage from "./pages/About";
 import ServiceDetail from "./pages/ServiceDetail";
+import ChallengeDetail from "./pages/ChallengeDetail";
 import News from "./pages/News";
 import CommunityBlog from "./pages/CommunityBlog";
 import NotFound from "./pages/NotFound";
@@ -36,6 +37,7 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/services/:slug" element={<ServiceDetail />} />
+            <Route path="/challenges/:slug" element={<ChallengeDetail />} />
             <Route path="/resources/news" element={<News />} />
             <Route path="/resources/blog" element={<CommunityBlog />} />
             <Route path="/resources" element={<News />} />
