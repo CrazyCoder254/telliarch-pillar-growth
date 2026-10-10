@@ -70,7 +70,7 @@ const HeroScene = () => (
       <Lightformer intensity={1.2} color="#D7C7BB" position={[-5, 1, -1]} rotation-y={Math.PI / 2} scale={[20, 1, 1]} />
       <Lightformer intensity={1} color="#BC937A" position={[5, -1, 1]} rotation-y={-Math.PI / 2} scale={[20, 2, 1]} />
     </Environment>
-    <group position={[2.6, 0, 0]}>
+    <group position={[3.2, 0, -1.5]} scale={0.85}>
       <Float speed={1.2} rotationIntensity={0.4} floatIntensity={0.8}>
         <Orb />
         <Ring radius={2.3} tilt={[Math.PI / 2.4, 0, 0]} speed={0.3} color="#D7C7BB" />
