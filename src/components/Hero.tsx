@@ -6,7 +6,8 @@ import wellness3 from "@/assets/wellness-3.jpg";
 import wellness4 from "@/assets/wellness-4.jpg";
 import { useCountUp } from "@/hooks/useCountUp";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
+const HeroScene = lazy(() => import("./HeroScene"));
 
 const heroBackgrounds = [wellness1, wellness2, wellness3, wellness4];
 
@@ -37,7 +38,7 @@ const Hero = () => {
         <motion.div
           key={currentBgIndex}
           initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 0.4, scale: 1 }}
+          animate={{ opacity: 0.18, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.4, ease: "easeInOut" }}
           className="absolute inset-0 bg-cover bg-center"
@@ -46,6 +47,9 @@ const Hero = () => {
         />
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-r from-[#2E241C]/85 via-[#443932]/70 to-[#735E4E]/60" aria-hidden />
+      <div className="absolute inset-0 z-[5]" aria-hidden>
+        <Suspense fallback={null}><HeroScene /></Suspense>
+      </div>
 
       {/* Slideshow indicators */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
@@ -63,13 +67,13 @@ const Hero = () => {
 
 
 
-      <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center text-white space-y-8">
+      <div className="container mx-auto px-4 py-32 relative z-10 pointer-events-none">
+        <div className="max-w-4xl mx-auto lg:mx-0 lg:max-w-2xl text-center lg:text-left pointer-events-auto text-white space-y-8">
 
           <motion.h1 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight drop-shadow-2xl"
           >
             <span className="text-white">Integrated </span>
@@ -80,7 +84,7 @@ const Hero = () => {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.8 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="text-xl md:text-2xl text-white/90 leading-relaxed"
           >
             We empower people and institutions to thrive through mental wellness, personal development, and sustainable growth strategies.
@@ -89,8 +93,8 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center"
           >
             <Button
               onClick={() => scrollToSection("contact")}
@@ -114,7 +118,7 @@ const Hero = () => {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2.5 }}
+            transition={{ duration: 1, delay: 1.1 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-white/20"
           >
             <motion.div 
