@@ -58,8 +58,8 @@ const Navbar = () => {
       <TopBar />
       <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 bg-[#F8F6F4] rounded-xl px-3 py-1 shadow-lg ring-2 ring-secondary/60 hover:ring-secondary transition-all hover:scale-105">
-            <img src={logoUrl} alt="Telliarch Consultancy Logo" className="h-9 md:h-11 w-auto object-contain" />
+          <Link to="/" className="flex items-center transition-transform hover:scale-105">
+            <img src={logoUrl} alt="Telliarch Consultancy Logo" className="h-12 md:h-16 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
           </Link>
 
           {/* Desktop Menu */}
