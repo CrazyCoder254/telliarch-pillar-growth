@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { ThemeToggle } from "./ThemeToggle";
 import TopBar from "./TopBar";
-const logoUrl = "/telliarch-logo.jpeg";
+const logoUrl = "/telliarch-logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
