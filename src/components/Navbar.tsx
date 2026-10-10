@@ -47,11 +47,11 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const linkClass = "text-white/90 hover:text-secondary transition-smooth font-medium";
+  const linkClass = "text-[#443932] hover:text-[#8A4B2A] transition-smooth font-medium";
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#2E241C] backdrop-blur-md border-b border-[#9E8E83]/30 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth bg-[#F8F6F4] backdrop-blur-md border-b border-[#9E8E83]/40 ${
         isScrolled ? "shadow-elegant" : ""
       }`}
     >
@@ -59,7 +59,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-1.5">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center transition-transform hover:scale-105">
-            <img src={logoUrl} alt="Telliarch Consultancy Logo" className="h-12 md:h-16 w-auto object-contain brightness-0 invert drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]" />
+            <img src={logoUrl} alt="Telliarch Consultancy Logo" className="h-12 md:h-16 w-auto object-contain [clip-path:inset(0_0_4%_0)]" />
           </Link>
 
           {/* Desktop Menu */}
@@ -74,9 +74,9 @@ const Navbar = () => {
                 <svg className="w-3 h-3" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.06l3.71-3.83a.75.75 0 111.08 1.04l-4.24 4.38a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"/></svg>
               </button>
               <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
-                <div className="bg-[#2E241C] border border-[#9E8E83]/40 rounded-lg shadow-elegant py-2 min-w-[160px]">
-                  <Link to="/resources/news" className="block px-4 py-2 text-white/90 hover:text-secondary hover:bg-white/5 transition-smooth">News</Link>
-                  <Link to="/resources/blog" className="block px-4 py-2 text-white/90 hover:text-secondary hover:bg-white/5 transition-smooth">Blogs</Link>
+                <div className="bg-[#F8F6F4] border border-[#9E8E83]/40 rounded-lg shadow-elegant py-2 min-w-[160px]">
+                  <Link to="/resources/news" className="block px-4 py-2 text-[#443932] hover:text-[#8A4B2A] hover:bg-black/5 transition-smooth">News</Link>
+                  <Link to="/resources/blog" className="block px-4 py-2 text-[#443932] hover:text-[#8A4B2A] hover:bg-black/5 transition-smooth">Blogs</Link>
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-[#443932]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -101,7 +101,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#2E241C] rounded-lg p-4 shadow-elegant border border-[#9E8E83]/30">
+          <div className="md:hidden mt-3 pb-3 space-y-3 animate-in slide-in-from-top bg-[#F8F6F4] rounded-lg p-4 shadow-elegant border border-[#9E8E83]/30">
             <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Home</Link>
             <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>About</Link>
             <button onClick={() => scrollToSection("services")} className={`block w-full text-left py-2 ${linkClass}`}>Services</button>
@@ -111,7 +111,7 @@ const Navbar = () => {
             <Link to="/gallery" onClick={() => setIsMobileMenuOpen(false)} className={`block w-full text-left py-2 ${linkClass}`}>Gallery</Link>
             <button onClick={() => scrollToSection("contact")} className={`block w-full text-left py-2 ${linkClass}`}>Contact</button>
             <div className="flex items-center gap-2 py-2">
-              <span className="text-white/90 font-medium">Theme:</span>
+              <span className="text-[#443932] font-medium">Theme:</span>
               <ThemeToggle />
             </div>
             {user ? (
